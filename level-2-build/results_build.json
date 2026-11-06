@@ -1,0 +1,1003 @@
+{
+  "barge_in": [
+    {
+      "cancelled": false,
+      "first_frames_total": 70,
+      "first_transcript": "What is the weather in Toronto",
+      "frames_dropped": 60,
+      "frames_played_before_interrupt": 10,
+      "interrupt_transcript": "What time is it",
+      "new_intent": "time",
+      "new_response": "The time is 10:30.",
+      "scenario_id": "A1",
+      "state_after": "SPEAKING"
+    },
+    {
+      "cancelled": true,
+      "first_frames_total": 102,
+      "first_transcript": "What can you do",
+      "frames_dropped": 101,
+      "frames_played_before_interrupt": 1,
+      "interrupt_transcript": "Stop",
+      "new_intent": null,
+      "new_response": null,
+      "scenario_id": "A2",
+      "state_after": "IDLE"
+    },
+    {
+      "cancelled": false,
+      "first_frames_total": 6,
+      "first_transcript": "Goodbye for now",
+      "frames_dropped": 4,
+      "frames_played_before_interrupt": 2,
+      "interrupt_transcript": "What is the date today",
+      "new_intent": "date",
+      "new_response": "The date is 2026-11-05.",
+      "scenario_id": "A3",
+      "state_after": "SPEAKING"
+    }
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "D1",
+      "turns": [
+        {
+          "expected_intent": "weather",
+          "expected_response": "The weather in Toronto is clear, 12 degrees Celsius.",
+          "intent": "weather",
+          "intent_correct": true,
+          "response": "The weather in Toronto is clear, 12 degrees Celsius.",
+          "response_correct": true,
+          "transcript": "What is the weather in Toronto"
+        },
+        {
+          "expected_intent": "weather",
+          "expected_response": "The weather in Dhaka is humid, 29 degrees Celsius.",
+          "intent": "weather",
+          "intent_correct": true,
+          "response": "The weather in Dhaka is humid, 29 degrees Celsius.",
+          "response_correct": true,
+          "transcript": "And in Dhaka"
+        },
+        {
+          "expected_intent": "weather",
+          "expected_response": "The weather in Toronto is clear, 12 degrees Celsius.",
+          "intent": "weather",
+          "intent_correct": true,
+          "response": "The weather in Toronto is clear, 12 degrees Celsius.",
+          "response_correct": true,
+          "transcript": "What about Toronto"
+        }
+      ]
+    },
+    {
+      "dialogue_id": "D2",
+      "turns": [
+        {
+          "expected_intent": "timer_pending",
+          "expected_response": "For how long should I set the timer?",
+          "intent": "timer_pending",
+          "intent_correct": true,
+          "response": "For how long should I set the timer?",
+          "response_correct": true,
+          "transcript": "Set a timer"
+        },
+        {
+          "expected_intent": "timer",
+          "expected_response": "Timer set for 300 seconds.",
+          "intent": "timer",
+          "intent_correct": true,
+          "response": "Timer set for 300 seconds.",
+          "response_correct": true,
+          "transcript": "5 minutes"
+        },
+        {
+          "expected_intent": "repeat",
+          "expected_response": "Timer set for 300 seconds.",
+          "intent": "repeat",
+          "intent_correct": true,
+          "response": "Timer set for 300 seconds.",
+          "response_correct": true,
+          "transcript": "Say that again"
+        }
+      ]
+    },
+    {
+      "dialogue_id": "D3",
+      "turns": [
+        {
+          "expected_intent": "time",
+          "expected_response": "The time is 10:30.",
+          "intent": "time",
+          "intent_correct": true,
+          "response": "The time is 10:30.",
+          "response_correct": true,
+          "transcript": "What time is it"
+        },
+        {
+          "expected_intent": "repeat",
+          "expected_response": "The time is 10:30.",
+          "intent": "repeat",
+          "intent_correct": true,
+          "response": "The time is 10:30.",
+          "response_correct": true,
+          "transcript": "Say that again"
+        }
+      ]
+    },
+    {
+      "dialogue_id": "D4",
+      "turns": [
+        {
+          "expected_intent": "greeting",
+          "expected_response": "Hello. How can I help?",
+          "intent": "greeting",
+          "intent_correct": true,
+          "response": "Hello. How can I help?",
+          "response_correct": true,
+          "transcript": "Hello there"
+        },
+        {
+          "expected_intent": "help",
+          "expected_response": "You can ask for the time, the date, the weather, or a timer.",
+          "intent": "help",
+          "intent_correct": true,
+          "response": "You can ask for the time, the date, the weather, or a timer.",
+          "response_correct": true,
+          "transcript": "What can you do"
+        },
+        {
+          "expected_intent": "goodbye",
+          "expected_response": "Goodbye.",
+          "intent": "goodbye",
+          "intent_correct": true,
+          "response": "Goodbye.",
+          "response_correct": true,
+          "transcript": "Goodbye for now"
+        }
+      ]
+    },
+    {
+      "dialogue_id": "D5",
+      "turns": [
+        {
+          "expected_intent": "unknown",
+          "expected_response": "I do not know that yet. Ask for the time, the date, the weather, or a timer.",
+          "intent": "unknown",
+          "intent_correct": true,
+          "response": "I do not know that yet. Ask for the time, the date, the weather, or a timer.",
+          "response_correct": true,
+          "transcript": "Tell me about quantum tunneling"
+        },
+        {
+          "expected_intent": "date",
+          "expected_response": "The date is 2026-11-05.",
+          "intent": "date",
+          "intent_correct": true,
+          "response": "The date is 2026-11-05.",
+          "response_correct": true,
+          "transcript": "What is the date today"
+        }
+      ]
+    }
+  ],
+  "label": "end-to-end voice loop on CPU: transcript partials in (simulated ASR, no ASR model), Learn rule answer reused by import (no LLM), tone-synthesized WAV out (real WAV data, no intelligible speech, no TTS model), Muse VM, standard library only",
+  "level": "2-build",
+  "method": "Single turns run the core pipeline; dialogues run a stateful DialogueSession; noise runs push the same transcripts through a deterministic simulated ASR map (weather to whether, the dropped) and are scored with word error rate; barge-in runs over real 20 ms WAV frames. No wall-clock field exists in this file: durations are sample counts divided by 8000 Hz, so the file is byte-identical across runs.",
+  "noise": [
+    {
+      "asr_heard": "hello there",
+      "case_id": "B01",
+      "expected_intent": "greeting",
+      "intent": "greeting",
+      "intent_correct": true,
+      "transcript": "Hello there",
+      "wer": 0.0
+    },
+    {
+      "asr_heard": "what time is it",
+      "case_id": "B02",
+      "expected_intent": "time",
+      "intent": "time",
+      "intent_correct": true,
+      "transcript": "What time is it",
+      "wer": 0.0
+    },
+    {
+      "asr_heard": "what is date today",
+      "case_id": "B03",
+      "expected_intent": "date",
+      "intent": "date",
+      "intent_correct": true,
+      "transcript": "What is the date today",
+      "wer": 0.2
+    },
+    {
+      "asr_heard": "what is whether in toronto",
+      "case_id": "B04",
+      "expected_intent": "weather",
+      "intent": "unknown",
+      "intent_correct": false,
+      "transcript": "What is the weather in Toronto",
+      "wer": 0.3333
+    },
+    {
+      "asr_heard": "how is whether in dhaka",
+      "case_id": "B05",
+      "expected_intent": "weather",
+      "intent": "unknown",
+      "intent_correct": false,
+      "transcript": "How is the weather in Dhaka",
+      "wer": 0.3333
+    },
+    {
+      "asr_heard": "what is whether",
+      "case_id": "B06",
+      "expected_intent": "weather",
+      "intent": "unknown",
+      "intent_correct": false,
+      "transcript": "What is the weather",
+      "wer": 0.5
+    },
+    {
+      "asr_heard": "set a timer for 5 minutes",
+      "case_id": "B07",
+      "expected_intent": "timer",
+      "intent": "timer",
+      "intent_correct": true,
+      "transcript": "Set a timer for 5 minutes",
+      "wer": 0.0
+    },
+    {
+      "asr_heard": "set a timer for 30 seconds",
+      "case_id": "B08",
+      "expected_intent": "timer",
+      "intent": "timer",
+      "intent_correct": true,
+      "transcript": "Set a timer for 30 seconds",
+      "wer": 0.0
+    },
+    {
+      "asr_heard": "set a timer for 2 minutes",
+      "case_id": "B09",
+      "expected_intent": "timer",
+      "intent": "timer",
+      "intent_correct": true,
+      "transcript": "Set a timer for 2 minutes",
+      "wer": 0.0
+    },
+    {
+      "asr_heard": "what is your name",
+      "case_id": "B10",
+      "expected_intent": "name",
+      "intent": "name",
+      "intent_correct": true,
+      "transcript": "What is your name",
+      "wer": 0.0
+    },
+    {
+      "asr_heard": "what can you do",
+      "case_id": "B11",
+      "expected_intent": "help",
+      "intent": "help",
+      "intent_correct": true,
+      "transcript": "What can you do",
+      "wer": 0.0
+    },
+    {
+      "asr_heard": "goodbye for now",
+      "case_id": "B12",
+      "expected_intent": "goodbye",
+      "intent": "goodbye",
+      "intent_correct": true,
+      "transcript": "Goodbye for now",
+      "wer": 0.0
+    },
+    {
+      "asr_heard": "tell me about quantum tunneling",
+      "case_id": "B13",
+      "expected_intent": "unknown",
+      "intent": "unknown",
+      "intent_correct": true,
+      "transcript": "Tell me about quantum tunneling",
+      "wer": 0.0
+    },
+    {
+      "asr_heard": "hi there",
+      "case_id": "B14",
+      "expected_intent": "greeting",
+      "intent": "greeting",
+      "intent_correct": true,
+      "transcript": "Hi there",
+      "wer": 0.0
+    },
+    {
+      "asr_heard": "set a timer for 90 seconds",
+      "case_id": "B15",
+      "expected_intent": "timer",
+      "intent": "timer",
+      "intent_correct": true,
+      "transcript": "Set a timer for 90 seconds",
+      "wer": 0.0
+    },
+    {
+      "asr_heard": "what is whether in dhaka today",
+      "case_id": "B16",
+      "expected_intent": "weather",
+      "intent": "unknown",
+      "intent_correct": false,
+      "transcript": "What is the weather in Dhaka today",
+      "wer": 0.2857
+    },
+    {
+      "asr_heard": "please set a timer",
+      "case_id": "B17",
+      "expected_intent": "timer",
+      "intent": "timer",
+      "intent_correct": true,
+      "transcript": "Please set a timer",
+      "wer": 0.0
+    },
+    {
+      "asr_heard": "bye now",
+      "case_id": "B18",
+      "expected_intent": "goodbye",
+      "intent": "goodbye",
+      "intent_correct": true,
+      "transcript": "Bye now",
+      "wer": 0.0
+    },
+    {
+      "asr_heard": "hey",
+      "case_id": "B19",
+      "expected_intent": "greeting",
+      "intent": "greeting",
+      "intent_correct": true,
+      "transcript": "Hey",
+      "wer": 0.0
+    },
+    {
+      "asr_heard": "what time is it in toronto",
+      "case_id": "B20",
+      "expected_intent": "time",
+      "intent": "time",
+      "intent_correct": true,
+      "transcript": "What time is it in Toronto",
+      "wer": 0.0
+    }
+  ],
+  "single": [
+    {
+      "audio": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "wav_bytes": 12204
+      },
+      "case_id": "B01",
+      "expected_intent": "greeting",
+      "expected_response": "Hello. How can I help?",
+      "intent": "greeting",
+      "intent_correct": true,
+      "response": "Hello. How can I help?",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "greeting",
+        "first_correct_partial": 1,
+        "partial_intents": [
+          "greeting",
+          "greeting"
+        ],
+        "partials": 2,
+        "stable_from_first": true
+      },
+      "transcript": "Hello there"
+    },
+    {
+      "audio": {
+        "duration_ms": 600.0,
+        "frame_count": 30,
+        "sample_count": 4800,
+        "silence_frames": 6,
+        "speech_frames": 24,
+        "wav_bytes": 9644
+      },
+      "case_id": "B02",
+      "expected_intent": "time",
+      "expected_response": "The time is 10:30.",
+      "intent": "time",
+      "intent_correct": true,
+      "response": "The time is 10:30.",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "time",
+        "first_correct_partial": 2,
+        "partial_intents": [
+          "unknown",
+          "time",
+          "time",
+          "time"
+        ],
+        "partials": 4,
+        "stable_from_first": true
+      },
+      "transcript": "What time is it"
+    },
+    {
+      "audio": {
+        "duration_ms": 600.0,
+        "frame_count": 30,
+        "sample_count": 4800,
+        "silence_frames": 6,
+        "speech_frames": 24,
+        "wav_bytes": 9644
+      },
+      "case_id": "B03",
+      "expected_intent": "date",
+      "expected_response": "The date is 2026-11-05.",
+      "intent": "date",
+      "intent_correct": true,
+      "response": "The date is 2026-11-05.",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "date",
+        "first_correct_partial": 4,
+        "partial_intents": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "date",
+          "date"
+        ],
+        "partials": 5,
+        "stable_from_first": true
+      },
+      "transcript": "What is the date today"
+    },
+    {
+      "audio": {
+        "duration_ms": 1400.0,
+        "frame_count": 70,
+        "sample_count": 11200,
+        "silence_frames": 16,
+        "speech_frames": 54,
+        "wav_bytes": 22444
+      },
+      "case_id": "B04",
+      "expected_intent": "weather",
+      "expected_response": "The weather in Toronto is clear, 12 degrees Celsius.",
+      "intent": "weather",
+      "intent_correct": true,
+      "response": "The weather in Toronto is clear, 12 degrees Celsius.",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "weather",
+        "first_correct_partial": 4,
+        "partial_intents": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "weather",
+          "weather",
+          "weather"
+        ],
+        "partials": 6,
+        "stable_from_first": true
+      },
+      "transcript": "What is the weather in Toronto"
+    },
+    {
+      "audio": {
+        "duration_ms": 1400.0,
+        "frame_count": 70,
+        "sample_count": 11200,
+        "silence_frames": 16,
+        "speech_frames": 54,
+        "wav_bytes": 22444
+      },
+      "case_id": "B05",
+      "expected_intent": "weather",
+      "expected_response": "The weather in Dhaka is humid, 29 degrees Celsius.",
+      "intent": "weather",
+      "intent_correct": true,
+      "response": "The weather in Dhaka is humid, 29 degrees Celsius.",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "weather",
+        "first_correct_partial": 4,
+        "partial_intents": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "weather",
+          "weather",
+          "weather"
+        ],
+        "partials": 6,
+        "stable_from_first": true
+      },
+      "transcript": "How is the weather in Dhaka"
+    },
+    {
+      "audio": {
+        "duration_ms": 1400.0,
+        "frame_count": 70,
+        "sample_count": 11200,
+        "silence_frames": 16,
+        "speech_frames": 54,
+        "wav_bytes": 22444
+      },
+      "case_id": "B06",
+      "expected_intent": "weather",
+      "expected_response": "The weather in Toronto is clear, 12 degrees Celsius.",
+      "intent": "weather",
+      "intent_correct": true,
+      "response": "The weather in Toronto is clear, 12 degrees Celsius.",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "weather",
+        "first_correct_partial": 4,
+        "partial_intents": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "weather"
+        ],
+        "partials": 4,
+        "stable_from_first": true
+      },
+      "transcript": "What is the weather"
+    },
+    {
+      "audio": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "wav_bytes": 12204
+      },
+      "case_id": "B07",
+      "expected_intent": "timer",
+      "expected_response": "Timer set for 300 seconds.",
+      "intent": "timer",
+      "intent_correct": true,
+      "response": "Timer set for 300 seconds.",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "timer",
+        "first_correct_partial": 3,
+        "partial_intents": [
+          "unknown",
+          "unknown",
+          "timer",
+          "timer",
+          "timer",
+          "timer"
+        ],
+        "partials": 6,
+        "stable_from_first": true
+      },
+      "transcript": "Set a timer for 5 minutes"
+    },
+    {
+      "audio": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "wav_bytes": 12204
+      },
+      "case_id": "B08",
+      "expected_intent": "timer",
+      "expected_response": "Timer set for 30 seconds.",
+      "intent": "timer",
+      "intent_correct": true,
+      "response": "Timer set for 30 seconds.",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "timer",
+        "first_correct_partial": 3,
+        "partial_intents": [
+          "unknown",
+          "unknown",
+          "timer",
+          "timer",
+          "timer",
+          "timer"
+        ],
+        "partials": 6,
+        "stable_from_first": true
+      },
+      "transcript": "Set a timer for 30 seconds"
+    },
+    {
+      "audio": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "wav_bytes": 12204
+      },
+      "case_id": "B09",
+      "expected_intent": "timer",
+      "expected_response": "Timer set for 120 seconds.",
+      "intent": "timer",
+      "intent_correct": true,
+      "response": "Timer set for 120 seconds.",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "timer",
+        "first_correct_partial": 3,
+        "partial_intents": [
+          "unknown",
+          "unknown",
+          "timer",
+          "timer",
+          "timer",
+          "timer"
+        ],
+        "partials": 6,
+        "stable_from_first": true
+      },
+      "transcript": "Set a timer for 2 minutes"
+    },
+    {
+      "audio": {
+        "duration_ms": 1400.0,
+        "frame_count": 70,
+        "sample_count": 11200,
+        "silence_frames": 16,
+        "speech_frames": 54,
+        "wav_bytes": 22444
+      },
+      "case_id": "B10",
+      "expected_intent": "name",
+      "expected_response": "My name is Voice Lab, a teaching voice agent.",
+      "intent": "name",
+      "intent_correct": true,
+      "response": "My name is Voice Lab, a teaching voice agent.",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "name",
+        "first_correct_partial": 4,
+        "partial_intents": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "name"
+        ],
+        "partials": 4,
+        "stable_from_first": true
+      },
+      "transcript": "What is your name"
+    },
+    {
+      "audio": {
+        "duration_ms": 2040.0,
+        "frame_count": 102,
+        "sample_count": 16320,
+        "silence_frames": 24,
+        "speech_frames": 78,
+        "wav_bytes": 32684
+      },
+      "case_id": "B11",
+      "expected_intent": "help",
+      "expected_response": "You can ask for the time, the date, the weather, or a timer.",
+      "intent": "help",
+      "intent_correct": true,
+      "response": "You can ask for the time, the date, the weather, or a timer.",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "help",
+        "first_correct_partial": 4,
+        "partial_intents": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "help"
+        ],
+        "partials": 4,
+        "stable_from_first": true
+      },
+      "transcript": "What can you do"
+    },
+    {
+      "audio": {
+        "duration_ms": 120.0,
+        "frame_count": 6,
+        "sample_count": 960,
+        "silence_frames": 0,
+        "speech_frames": 6,
+        "wav_bytes": 1964
+      },
+      "case_id": "B12",
+      "expected_intent": "goodbye",
+      "expected_response": "Goodbye.",
+      "intent": "goodbye",
+      "intent_correct": true,
+      "response": "Goodbye.",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "goodbye",
+        "first_correct_partial": 1,
+        "partial_intents": [
+          "goodbye",
+          "goodbye",
+          "goodbye"
+        ],
+        "partials": 3,
+        "stable_from_first": true
+      },
+      "transcript": "Goodbye for now"
+    },
+    {
+      "audio": {
+        "duration_ms": 2680.0,
+        "frame_count": 134,
+        "sample_count": 21440,
+        "silence_frames": 32,
+        "speech_frames": 102,
+        "wav_bytes": 42924
+      },
+      "case_id": "B13",
+      "expected_intent": "unknown",
+      "expected_response": "I do not know that yet. Ask for the time, the date, the weather, or a timer.",
+      "intent": "unknown",
+      "intent_correct": true,
+      "response": "I do not know that yet. Ask for the time, the date, the weather, or a timer.",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "unknown",
+        "first_correct_partial": 1,
+        "partial_intents": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown",
+          "unknown"
+        ],
+        "partials": 5,
+        "stable_from_first": true
+      },
+      "transcript": "Tell me about quantum tunneling"
+    },
+    {
+      "audio": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "wav_bytes": 12204
+      },
+      "case_id": "B14",
+      "expected_intent": "greeting",
+      "expected_response": "Hello. How can I help?",
+      "intent": "greeting",
+      "intent_correct": true,
+      "response": "Hello. How can I help?",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "greeting",
+        "first_correct_partial": 1,
+        "partial_intents": [
+          "greeting",
+          "greeting"
+        ],
+        "partials": 2,
+        "stable_from_first": true
+      },
+      "transcript": "Hi there"
+    },
+    {
+      "audio": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "wav_bytes": 12204
+      },
+      "case_id": "B15",
+      "expected_intent": "timer",
+      "expected_response": "Timer set for 90 seconds.",
+      "intent": "timer",
+      "intent_correct": true,
+      "response": "Timer set for 90 seconds.",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "timer",
+        "first_correct_partial": 3,
+        "partial_intents": [
+          "unknown",
+          "unknown",
+          "timer",
+          "timer",
+          "timer",
+          "timer"
+        ],
+        "partials": 6,
+        "stable_from_first": true
+      },
+      "transcript": "Set a timer for 90 seconds"
+    },
+    {
+      "audio": {
+        "duration_ms": 1400.0,
+        "frame_count": 70,
+        "sample_count": 11200,
+        "silence_frames": 16,
+        "speech_frames": 54,
+        "wav_bytes": 22444
+      },
+      "case_id": "B16",
+      "expected_intent": "weather",
+      "expected_response": "The weather in Dhaka is humid, 29 degrees Celsius.",
+      "intent": "weather",
+      "intent_correct": true,
+      "response": "The weather in Dhaka is humid, 29 degrees Celsius.",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "weather",
+        "first_correct_partial": 4,
+        "partial_intents": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "weather",
+          "weather",
+          "weather",
+          "weather"
+        ],
+        "partials": 7,
+        "stable_from_first": true
+      },
+      "transcript": "What is the weather in Dhaka today"
+    },
+    {
+      "audio": {
+        "duration_ms": 1080.0,
+        "frame_count": 54,
+        "sample_count": 8640,
+        "silence_frames": 12,
+        "speech_frames": 42,
+        "wav_bytes": 17324
+      },
+      "case_id": "B17",
+      "expected_intent": "timer",
+      "expected_response": "I need a number for the timer.",
+      "intent": "timer",
+      "intent_correct": true,
+      "response": "I need a number for the timer.",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "timer",
+        "first_correct_partial": 4,
+        "partial_intents": [
+          "unknown",
+          "unknown",
+          "unknown",
+          "timer"
+        ],
+        "partials": 4,
+        "stable_from_first": true
+      },
+      "transcript": "Please set a timer"
+    },
+    {
+      "audio": {
+        "duration_ms": 120.0,
+        "frame_count": 6,
+        "sample_count": 960,
+        "silence_frames": 0,
+        "speech_frames": 6,
+        "wav_bytes": 1964
+      },
+      "case_id": "B18",
+      "expected_intent": "goodbye",
+      "expected_response": "Goodbye.",
+      "intent": "goodbye",
+      "intent_correct": true,
+      "response": "Goodbye.",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "goodbye",
+        "first_correct_partial": 1,
+        "partial_intents": [
+          "goodbye",
+          "goodbye"
+        ],
+        "partials": 2,
+        "stable_from_first": true
+      },
+      "transcript": "Bye now"
+    },
+    {
+      "audio": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "wav_bytes": 12204
+      },
+      "case_id": "B19",
+      "expected_intent": "greeting",
+      "expected_response": "Hello. How can I help?",
+      "intent": "greeting",
+      "intent_correct": true,
+      "response": "Hello. How can I help?",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "greeting",
+        "first_correct_partial": 1,
+        "partial_intents": [
+          "greeting"
+        ],
+        "partials": 1,
+        "stable_from_first": true
+      },
+      "transcript": "Hey"
+    },
+    {
+      "audio": {
+        "duration_ms": 600.0,
+        "frame_count": 30,
+        "sample_count": 4800,
+        "silence_frames": 6,
+        "speech_frames": 24,
+        "wav_bytes": 9644
+      },
+      "case_id": "B20",
+      "expected_intent": "time",
+      "expected_response": "The time is 10:30.",
+      "intent": "time",
+      "intent_correct": true,
+      "response": "The time is 10:30.",
+      "response_correct": true,
+      "streaming": {
+        "final_intent": "time",
+        "first_correct_partial": 2,
+        "partial_intents": [
+          "unknown",
+          "time",
+          "time",
+          "time",
+          "time",
+          "time"
+        ],
+        "partials": 6,
+        "stable_from_first": true
+      },
+      "transcript": "What time is it in Toronto"
+    }
+  ],
+  "summary": {
+    "audio_silence_frames": 222,
+    "audio_speech_frames": 786,
+    "audio_total_duration_ms": 20160.0,
+    "audio_total_frames": 1008,
+    "audio_total_wav_bytes": 323440,
+    "barge_in_frames_dropped": 165,
+    "barge_in_scenarios": 3,
+    "dialogue_intent_correct": 13,
+    "dialogue_response_correct": 13,
+    "dialogue_turns": 13,
+    "dialogues": 5,
+    "noise_cases": 20,
+    "noise_intent_correct": 16,
+    "noise_mean_wer": 0.0826,
+    "single_cases": 20,
+    "single_intent_correct": 20,
+    "single_response_correct": 20,
+    "streaming_cases_with_first_correct": 20,
+    "streaming_early_cases": 15,
+    "streaming_mean_first_correct_partial": 2.7,
+    "streaming_stable_cases": 20
+  }
+}
