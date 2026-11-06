@@ -8,10 +8,19 @@ import unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "level-1-learn"))
-from voice_agent import (MS_PER_WORD, VoiceSession, assess_budget,  # noqa: E402
-                         extract_city, extract_timer_seconds, frame_text,
-                         normalize, run_turn, stage_answer, stage_intent,
-                         stage_tts)
+from voice_agent import (  # noqa: E402
+    MS_PER_WORD,
+    VoiceSession,
+    assess_budget,
+    extract_city,
+    extract_timer_seconds,
+    frame_text,
+    normalize,
+    run_turn,
+    stage_answer,
+    stage_intent,
+    stage_tts,
+)
 
 
 class TestNormalizeAndFraming(unittest.TestCase):
