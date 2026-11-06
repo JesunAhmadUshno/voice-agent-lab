@@ -1,0 +1,144 @@
+{
+  "single": [
+    {
+      "case_id": "B01",
+      "expected_intent": "greeting",
+      "expected_response": "Hello. How can I help?",
+      "transcript": "Hello there"
+    },
+    {
+      "case_id": "B02",
+      "expected_intent": "time",
+      "expected_response": "The time is 10:30.",
+      "transcript": "What time is it"
+    },
+    {
+      "case_id": "B03",
+      "expected_intent": "date",
+      "expected_response": "The date is 2026-11-05.",
+      "transcript": "What is the date today"
+    },
+    {
+      "case_id": "B04",
+      "expected_intent": "weather",
+      "expected_response": "The weather in Toronto is clear, 12 degrees Celsius.",
+      "transcript": "What is the weather in Toronto"
+    },
+    {
+      "case_id": "B05",
+      "expected_intent": "weather",
+      "expected_response": "The weather in Dhaka is humid, 29 degrees Celsius.",
+      "transcript": "How is the weather in Dhaka"
+    },
+    {
+      "case_id": "B06",
+      "expected_intent": "weather",
+      "expected_response": "The weather in Toronto is clear, 12 degrees Celsius.",
+      "transcript": "What is the weather"
+    },
+    {
+      "case_id": "B07",
+      "expected_intent": "timer",
+      "expected_response": "Timer set for 300 seconds.",
+      "transcript": "Set a timer for 5 minutes"
+    },
+    {
+      "case_id": "B08",
+      "expected_intent": "timer",
+      "expected_response": "Timer set for 30 seconds.",
+      "transcript": "Set a timer for 30 seconds"
+    },
+    {
+      "case_id": "B09",
+      "expected_intent": "timer",
+      "expected_response": "Timer set for 120 seconds.",
+      "transcript": "Set a timer for 2 minutes"
+    },
+    {
+      "case_id": "B10",
+      "expected_intent": "name",
+      "expected_response": "My name is Voice Lab, a teaching voice agent.",
+      "transcript": "What is your name"
+    },
+    {
+      "case_id": "B11",
+      "expected_intent": "help",
+      "expected_response": "You can ask for the time, the date, the weather, or a timer.",
+      "transcript": "What can you do"
+    },
+    {
+      "case_id": "B12",
+      "expected_intent": "goodbye",
+      "expected_response": "Goodbye.",
+      "transcript": "Goodbye for now"
+    },
+    {
+      "case_id": "B13",
+      "expected_intent": "unknown",
+      "expected_response": "I do not know that yet. Ask for the time, the date, the weather, or a timer.",
+      "transcript": "Tell me about quantum tunneling"
+    },
+    {
+      "case_id": "B14",
+      "expected_intent": "greeting",
+      "expected_response": "Hello. How can I help?",
+      "transcript": "Hi there"
+    },
+    {
+      "case_id": "B15",
+      "expected_intent": "timer",
+      "expected_response": "Timer set for 90 seconds.",
+      "transcript": "Set a timer for 90 seconds"
+    },
+    {
+      "case_id": "B16",
+      "expected_intent": "weather",
+      "expected_response": "The weather in Dhaka is humid, 29 degrees Celsius.",
+      "transcript": "What is the weather in Dhaka today"
+    },
+    {
+      "case_id": "B17",
+      "expected_intent": "timer",
+      "expected_response": "I need a number for the timer.",
+      "transcript": "Please set a timer"
+    },
+    {
+      "case_id": "B18",
+      "expected_intent": "goodbye",
+      "expected_response": "Goodbye.",
+      "transcript": "Bye now"
+    },
+    {
+      "case_id": "B19",
+      "expected_intent": "greeting",
+      "expected_response": "Hello. How can I help?",
+      "transcript": "Hey"
+    },
+    {
+      "case_id": "B20",
+      "expected_intent": "time",
+      "expected_response": "The time is 10:30.",
+      "transcript": "What time is it in Toronto"
+    }
+  ],
+  "barge_in": [
+    {
+      "first_transcript": "What is the weather in Toronto",
+      "interrupt_transcript": "What time is it",
+      "play_frames": 10,
+      "scenario_id": "A1"
+    },
+    {
+      "first_transcript": "What can you do",
+      "interrupt_transcript": "Stop",
+      "play_frames": 1,
+      "scenario_id": "A2"
+    },
+    {
+      "first_transcript": "Goodbye for now",
+      "interrupt_transcript": "What is the date today",
+      "play_frames": 2,
+      "scenario_id": "A3"
+    }
+  ]
+}
