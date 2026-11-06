@@ -39,8 +39,7 @@ import wave
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "level-1-learn"))
-from voice_agent import (extract_timer_seconds, normalize,  # noqa: E402
-                         run_turn, stage_intent)
+from voice_agent import extract_timer_seconds, normalize, run_turn, stage_intent  # noqa: E402
 
 SAMPLE_RATE = 8000
 FRAME_SAMPLES = 160          # 20 ms at 8000 Hz

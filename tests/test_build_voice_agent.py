@@ -8,11 +8,19 @@ import unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "level-2-build"))
-from voice_pipeline import (AudioSession, DialogueSession,  # noqa: E402
-                            frame_is_speech, frame_rms, run_core_turn,
-                            simulate_asr, streaming_trace,
-                            synthesize_samples, synthesize_wav,
-                            word_error_rate, word_frequency)
+from voice_pipeline import (  # noqa: E402
+    AudioSession,
+    DialogueSession,
+    frame_is_speech,
+    frame_rms,
+    run_core_turn,
+    simulate_asr,
+    streaming_trace,
+    synthesize_samples,
+    synthesize_wav,
+    word_error_rate,
+    word_frequency,
+)
 
 
 class TestToneSynth(unittest.TestCase):

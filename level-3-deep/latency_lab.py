@@ -34,9 +34,14 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "level-1-learn"))
 sys.path.insert(0, os.path.join(HERE, "..", "level-2-build"))
 from voice_agent import stage_answer, stage_intent  # noqa: E402
-from voice_pipeline import (AudioSession, audio_frames,  # noqa: E402
-                            frame_is_speech, streaming_trace,
-                            synthesize_samples, synthesize_wav)
+from voice_pipeline import (  # noqa: E402
+    AudioSession,
+    audio_frames,
+    frame_is_speech,
+    streaming_trace,
+    synthesize_samples,
+    synthesize_wav,
+)
 
 # Design budget, set in DEEP-SPEC.md before measuring.
 BUDGET_US = 100000.0        # 100 ms for the sum of stage medians

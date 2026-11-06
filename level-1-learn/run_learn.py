@@ -17,8 +17,7 @@ import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from voice_agent import (VoiceSession, assess_budget, run_turn,  # noqa: E402
-                         stage_answer, stage_frame, stage_intent, stage_tts)
+from voice_agent import VoiceSession, assess_budget, run_turn, stage_answer, stage_frame, stage_intent, stage_tts  # noqa: E402
 
 BUDGET_US = 5000.0  # 5 ms budget for the sum of measured text-stage means
 REPEATS = 2000      # calls per stage per case in each timing batch
