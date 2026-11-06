@@ -14,9 +14,8 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from voice_pipeline import (AudioSession, DialogueSession,  # noqa: E402
-                            run_core_turn, simulate_asr,
-                            word_error_rate)
+from voice_pipeline import AudioSession, DialogueSession, run_core_turn, simulate_asr, word_error_rate  # noqa: E402
+
 sys.path.insert(0, os.path.join(HERE, "..", "level-1-learn"))
 from voice_agent import normalize, run_turn  # noqa: E402
 

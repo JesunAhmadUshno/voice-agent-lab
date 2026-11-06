@@ -19,14 +19,25 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from latency_lab import (assess_turn_budget, barge_drop,  # noqa: E402
-                         barge_full, modelled_cloud, response_size,
-                         setup_barge, stage_frame_vad,
-                         stage_intent_answer, stage_streaming,
-                         stage_wav_synthesis, summarize,
-                         time_callable, time_setup_callable)
+from latency_lab import (  # noqa: E402
+    assess_turn_budget,
+    barge_drop,
+    barge_full,
+    modelled_cloud,
+    response_size,
+    setup_barge,
+    stage_frame_vad,
+    stage_intent_answer,
+    stage_streaming,
+    stage_wav_synthesis,
+    summarize,
+    time_callable,
+    time_setup_callable,
+)
+
 sys.path.insert(0, os.path.join(HERE, "..", "level-2-build"))
 from voice_pipeline import run_core_turn, synthesize_samples  # noqa: E402
+
 sys.path.insert(0, os.path.join(HERE, "..", "level-1-learn"))
 from voice_agent import normalize  # noqa: E402
 
