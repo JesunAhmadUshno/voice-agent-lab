@@ -1,0 +1,448 @@
+{
+  "barge_in": [
+    {
+      "cancelled": false,
+      "first_frames_total": 3,
+      "first_transcript": "What is the weather in Toronto",
+      "frames_dropped": 1,
+      "frames_played_before_interrupt": 2,
+      "interrupt_transcript": "What time is it",
+      "new_intent": "time",
+      "new_response": "The time is 10:30.",
+      "scenario_id": "B1",
+      "state_after": "SPEAKING"
+    },
+    {
+      "cancelled": true,
+      "first_frames_total": 5,
+      "first_transcript": "What can you do",
+      "frames_dropped": 4,
+      "frames_played_before_interrupt": 1,
+      "interrupt_transcript": "Stop",
+      "new_intent": null,
+      "new_response": null,
+      "scenario_id": "B2",
+      "state_after": "IDLE"
+    }
+  ],
+  "budget_us": 5000.0,
+  "cases": [
+    {
+      "budget_us": 5000.0,
+      "case_id": "C01",
+      "expected_intent": "greeting",
+      "expected_response": "Hello. How can I help?",
+      "frames_in": [
+        "hello there"
+      ],
+      "intent": "greeting",
+      "intent_correct": true,
+      "normalized": "hello there",
+      "response": "Hello. How can I help?",
+      "response_correct": true,
+      "slots": {},
+      "stage_us": {
+        "answer_us": 0.095,
+        "frame_in_us": 1.76,
+        "intent_us": 0.319,
+        "tts_plan_us": 1.18
+      },
+      "total_stage_us": 3.354,
+      "transcript": "Hello there",
+      "tts_est_speech_ms": 2000,
+      "tts_frame_count": 2,
+      "tts_frames": [
+        "Hello. How can",
+        "I help?"
+      ],
+      "tts_word_count": 5,
+      "within_budget": true
+    },
+    {
+      "budget_us": 5000.0,
+      "case_id": "C02",
+      "expected_intent": "time",
+      "expected_response": "The time is 10:30.",
+      "frames_in": [
+        "what time is",
+        "it"
+      ],
+      "intent": "time",
+      "intent_correct": true,
+      "normalized": "what time is it",
+      "response": "The time is 10:30.",
+      "response_correct": true,
+      "slots": {},
+      "stage_us": {
+        "answer_us": 0.213,
+        "frame_in_us": 2.183,
+        "intent_us": 0.514,
+        "tts_plan_us": 1.103
+      },
+      "total_stage_us": 4.013,
+      "transcript": "What time is it",
+      "tts_est_speech_ms": 1600,
+      "tts_frame_count": 2,
+      "tts_frames": [
+        "The time is",
+        "10:30."
+      ],
+      "tts_word_count": 4,
+      "within_budget": true
+    },
+    {
+      "budget_us": 5000.0,
+      "case_id": "C03",
+      "expected_intent": "date",
+      "expected_response": "The date is 2026-11-05.",
+      "frames_in": [
+        "what is the",
+        "date today"
+      ],
+      "intent": "date",
+      "intent_correct": true,
+      "normalized": "what is the date today",
+      "response": "The date is 2026-11-05.",
+      "response_correct": true,
+      "slots": {},
+      "stage_us": {
+        "answer_us": 0.223,
+        "frame_in_us": 2.367,
+        "intent_us": 0.656,
+        "tts_plan_us": 1.092
+      },
+      "total_stage_us": 4.338,
+      "transcript": "What is the date today",
+      "tts_est_speech_ms": 1600,
+      "tts_frame_count": 2,
+      "tts_frames": [
+        "The date is",
+        "2026-11-05."
+      ],
+      "tts_word_count": 4,
+      "within_budget": true
+    },
+    {
+      "budget_us": 5000.0,
+      "case_id": "C04",
+      "expected_intent": "weather",
+      "expected_response": "The weather in Toronto is clear, 12 degrees Celsius.",
+      "frames_in": [
+        "what is the",
+        "weather in toronto"
+      ],
+      "intent": "weather",
+      "intent_correct": true,
+      "normalized": "what is the weather in toronto",
+      "response": "The weather in Toronto is clear, 12 degrees Celsius.",
+      "response_correct": true,
+      "slots": {
+        "city": "toronto"
+      },
+      "stage_us": {
+        "answer_us": 0.437,
+        "frame_in_us": 2.528,
+        "intent_us": 0.963,
+        "tts_plan_us": 1.609
+      },
+      "total_stage_us": 5.537,
+      "transcript": "What is the weather in Toronto",
+      "tts_est_speech_ms": 3600,
+      "tts_frame_count": 3,
+      "tts_frames": [
+        "The weather in",
+        "Toronto is clear,",
+        "12 degrees Celsius."
+      ],
+      "tts_word_count": 9,
+      "within_budget": true
+    },
+    {
+      "budget_us": 5000.0,
+      "case_id": "C05",
+      "expected_intent": "weather",
+      "expected_response": "The weather in Dhaka is humid, 29 degrees Celsius.",
+      "frames_in": [
+        "how is the",
+        "weather in dhaka"
+      ],
+      "intent": "weather",
+      "intent_correct": true,
+      "normalized": "how is the weather in dhaka",
+      "response": "The weather in Dhaka is humid, 29 degrees Celsius.",
+      "response_correct": true,
+      "slots": {
+        "city": "dhaka"
+      },
+      "stage_us": {
+        "answer_us": 0.431,
+        "frame_in_us": 2.527,
+        "intent_us": 1.256,
+        "tts_plan_us": 1.588
+      },
+      "total_stage_us": 5.802,
+      "transcript": "How is the weather in Dhaka",
+      "tts_est_speech_ms": 3600,
+      "tts_frame_count": 3,
+      "tts_frames": [
+        "The weather in",
+        "Dhaka is humid,",
+        "29 degrees Celsius."
+      ],
+      "tts_word_count": 9,
+      "within_budget": true
+    },
+    {
+      "budget_us": 5000.0,
+      "case_id": "C06",
+      "expected_intent": "weather",
+      "expected_response": "The weather in Toronto is clear, 12 degrees Celsius.",
+      "frames_in": [
+        "what is the",
+        "weather"
+      ],
+      "intent": "weather",
+      "intent_correct": true,
+      "normalized": "what is the weather",
+      "response": "The weather in Toronto is clear, 12 degrees Celsius.",
+      "response_correct": true,
+      "slots": {
+        "city": "toronto"
+      },
+      "stage_us": {
+        "answer_us": 0.441,
+        "frame_in_us": 2.159,
+        "intent_us": 0.978,
+        "tts_plan_us": 1.574
+      },
+      "total_stage_us": 5.152,
+      "transcript": "What is the weather",
+      "tts_est_speech_ms": 3600,
+      "tts_frame_count": 3,
+      "tts_frames": [
+        "The weather in",
+        "Toronto is clear,",
+        "12 degrees Celsius."
+      ],
+      "tts_word_count": 9,
+      "within_budget": true
+    },
+    {
+      "budget_us": 5000.0,
+      "case_id": "C07",
+      "expected_intent": "timer",
+      "expected_response": "Timer set for 300 seconds.",
+      "frames_in": [
+        "set a timer",
+        "for 5 minutes"
+      ],
+      "intent": "timer",
+      "intent_correct": true,
+      "normalized": "set a timer for 5 minutes",
+      "response": "Timer set for 300 seconds.",
+      "response_correct": true,
+      "slots": {
+        "seconds": 300
+      },
+      "stage_us": {
+        "answer_us": 0.329,
+        "frame_in_us": 2.447,
+        "intent_us": 1.054,
+        "tts_plan_us": 1.213
+      },
+      "total_stage_us": 5.043,
+      "transcript": "Set a timer for 5 minutes",
+      "tts_est_speech_ms": 2000,
+      "tts_frame_count": 2,
+      "tts_frames": [
+        "Timer set for",
+        "300 seconds."
+      ],
+      "tts_word_count": 5,
+      "within_budget": true
+    },
+    {
+      "budget_us": 5000.0,
+      "case_id": "C08",
+      "expected_intent": "timer",
+      "expected_response": "Timer set for 30 seconds.",
+      "frames_in": [
+        "set a timer",
+        "for 30 seconds"
+      ],
+      "intent": "timer",
+      "intent_correct": true,
+      "normalized": "set a timer for 30 seconds",
+      "response": "Timer set for 30 seconds.",
+      "response_correct": true,
+      "slots": {
+        "seconds": 30
+      },
+      "stage_us": {
+        "answer_us": 0.327,
+        "frame_in_us": 2.65,
+        "intent_us": 1.074,
+        "tts_plan_us": 1.227
+      },
+      "total_stage_us": 5.278,
+      "transcript": "Set a timer for 30 seconds",
+      "tts_est_speech_ms": 2000,
+      "tts_frame_count": 2,
+      "tts_frames": [
+        "Timer set for",
+        "30 seconds."
+      ],
+      "tts_word_count": 5,
+      "within_budget": true
+    },
+    {
+      "budget_us": 5000.0,
+      "case_id": "C09",
+      "expected_intent": "name",
+      "expected_response": "My name is Voice Lab, a teaching voice agent.",
+      "frames_in": [
+        "what is your",
+        "name"
+      ],
+      "intent": "name",
+      "intent_correct": true,
+      "normalized": "what is your name",
+      "response": "My name is Voice Lab, a teaching voice agent.",
+      "response_correct": true,
+      "slots": {},
+      "stage_us": {
+        "answer_us": 0.32,
+        "frame_in_us": 2.138,
+        "intent_us": 0.754,
+        "tts_plan_us": 1.61
+      },
+      "total_stage_us": 4.822,
+      "transcript": "What is your name",
+      "tts_est_speech_ms": 3600,
+      "tts_frame_count": 3,
+      "tts_frames": [
+        "My name is",
+        "Voice Lab, a",
+        "teaching voice agent."
+      ],
+      "tts_word_count": 9,
+      "within_budget": true
+    },
+    {
+      "budget_us": 5000.0,
+      "case_id": "C10",
+      "expected_intent": "help",
+      "expected_response": "You can ask for the time, the date, the weather, or a timer.",
+      "frames_in": [
+        "what can you",
+        "do"
+      ],
+      "intent": "help",
+      "intent_correct": true,
+      "normalized": "what can you do",
+      "response": "You can ask for the time, the date, the weather, or a timer.",
+      "response_correct": true,
+      "slots": {},
+      "stage_us": {
+        "answer_us": 0.157,
+        "frame_in_us": 2.17,
+        "intent_us": 0.755,
+        "tts_plan_us": 2.081
+      },
+      "total_stage_us": 5.163,
+      "transcript": "What can you do",
+      "tts_est_speech_ms": 5200,
+      "tts_frame_count": 5,
+      "tts_frames": [
+        "You can ask",
+        "for the time,",
+        "the date, the",
+        "weather, or a",
+        "timer."
+      ],
+      "tts_word_count": 13,
+      "within_budget": true
+    },
+    {
+      "budget_us": 5000.0,
+      "case_id": "C11",
+      "expected_intent": "goodbye",
+      "expected_response": "Goodbye.",
+      "frames_in": [
+        "goodbye for now"
+      ],
+      "intent": "goodbye",
+      "intent_correct": true,
+      "normalized": "goodbye for now",
+      "response": "Goodbye.",
+      "response_correct": true,
+      "slots": {},
+      "stage_us": {
+        "answer_us": 0.153,
+        "frame_in_us": 1.87,
+        "intent_us": 0.696,
+        "tts_plan_us": 0.707
+      },
+      "total_stage_us": 3.426,
+      "transcript": "Goodbye for now",
+      "tts_est_speech_ms": 400,
+      "tts_frame_count": 1,
+      "tts_frames": [
+        "Goodbye."
+      ],
+      "tts_word_count": 1,
+      "within_budget": true
+    },
+    {
+      "budget_us": 5000.0,
+      "case_id": "C12",
+      "expected_intent": "unknown",
+      "expected_response": "I do not know that yet. Ask for the time, the date, the weather, or a timer.",
+      "frames_in": [
+        "tell me about",
+        "quantum tunneling"
+      ],
+      "intent": "unknown",
+      "intent_correct": true,
+      "normalized": "tell me about quantum tunneling",
+      "response": "I do not know that yet. Ask for the time, the date, the weather, or a timer.",
+      "response_correct": true,
+      "slots": {},
+      "stage_us": {
+        "answer_us": 0.17,
+        "frame_in_us": 2.414,
+        "intent_us": 1.019,
+        "tts_plan_us": 2.492
+      },
+      "total_stage_us": 6.095,
+      "transcript": "Tell me about quantum tunneling",
+      "tts_est_speech_ms": 6800,
+      "tts_frame_count": 6,
+      "tts_frames": [
+        "I do not",
+        "know that yet.",
+        "Ask for the",
+        "time, the date,",
+        "the weather, or",
+        "a timer."
+      ],
+      "tts_word_count": 17,
+      "within_budget": true
+    }
+  ],
+  "label": "simulated audio framing, text transcripts stand in for ASR output, text responses stand in for TTS output, no real ASR or TTS model, CPU only, Muse VM",
+  "level": "1-learn",
+  "method": "Per stage, 5 batches of 2000 calls timed with time.perf_counter_ns; the median batch mean per call is reported in microseconds. Correctness fields are deterministic; latency fields are measured and vary between runs.",
+  "repeats_per_batch": 2000,
+  "summary": {
+    "barge_in_frames_dropped": 5,
+    "barge_in_scenarios": 2,
+    "cases": 12,
+    "intent_correct": 12,
+    "max_total_stage_us": 6.095,
+    "mean_total_stage_us": 4.835,
+    "response_correct": 12,
+    "within_budget": 12
+  },
+  "timing_runs": 5
+}
