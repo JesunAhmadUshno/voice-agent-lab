@@ -1,0 +1,2101 @@
+{
+  "barge_in": [
+    {
+      "cancelled": false,
+      "drop_us": {
+        "max_us": 132.483,
+        "mean_us": 60.266,
+        "median_us": 51.326,
+        "min_us": 45.866,
+        "n": 60,
+        "p90_us": 86.868,
+        "p99_us": 132.483
+      },
+      "drop_within_budget": true,
+      "first_frames_total": 70,
+      "first_transcript": "What is the weather in Toronto",
+      "frames_dropped": 60,
+      "frames_played_before_interrupt": 10,
+      "full_us": {
+        "max_us": 41220.792,
+        "mean_us": 8677.266,
+        "median_us": 4674.552,
+        "min_us": 4634.241,
+        "n": 18,
+        "p90_us": 37853.843,
+        "p99_us": 41220.792
+      },
+      "interrupt_transcript": "What time is it",
+      "new_intent": "time",
+      "scenario_id": "A1"
+    },
+    {
+      "cancelled": true,
+      "drop_us": {
+        "max_us": 168.319,
+        "mean_us": 86.196,
+        "median_us": 75.864,
+        "min_us": 62.735,
+        "n": 60,
+        "p90_us": 116.573,
+        "p99_us": 168.319
+      },
+      "drop_within_budget": true,
+      "first_frames_total": 102,
+      "first_transcript": "What can you do",
+      "frames_dropped": 101,
+      "frames_played_before_interrupt": 1,
+      "full_us": {
+        "max_us": 301.866,
+        "mean_us": 96.473,
+        "median_us": 76.678,
+        "min_us": 65.237,
+        "n": 18,
+        "p90_us": 137.347,
+        "p99_us": 301.866
+      },
+      "interrupt_transcript": "Stop",
+      "new_intent": null,
+      "scenario_id": "A2"
+    },
+    {
+      "cancelled": false,
+      "drop_us": {
+        "max_us": 31.934,
+        "mean_us": 11.176,
+        "median_us": 10.121,
+        "min_us": 8.75,
+        "n": 60,
+        "p90_us": 13.399,
+        "p99_us": 31.934
+      },
+      "drop_within_budget": true,
+      "first_frames_total": 6,
+      "first_transcript": "Goodbye for now",
+      "frames_dropped": 4,
+      "frames_played_before_interrupt": 2,
+      "full_us": {
+        "max_us": 65178.786,
+        "mean_us": 10702.316,
+        "median_us": 4577.467,
+        "min_us": 4431.639,
+        "n": 18,
+        "p90_us": 52883.933,
+        "p99_us": 65178.786
+      },
+      "interrupt_transcript": "What is the date today",
+      "new_intent": "date",
+      "scenario_id": "A3"
+    }
+  ],
+  "budget_us": 100000.0,
+  "cases": [
+    {
+      "audio": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "wav_bytes": 12204
+      },
+      "case_id": "B01",
+      "expected_intent": "greeting",
+      "expected_response": "Hello. How can I help?",
+      "intent": "greeting",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 5,
+        "total_ms": 1205.0,
+        "tts_first_audio_ms": 125.0
+      },
+      "modelled_cloud_to_local_ratio": 179.77,
+      "response": "Hello. How can I help?",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "words": 5
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 706.646,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 1.602,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 7.93,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 5986.958,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 46758.051,
+          "mean_us": 1196.188,
+          "median_us": 706.646,
+          "min_us": 680.372,
+          "n": 99,
+          "p90_us": 777.415,
+          "p99_us": 46758.051
+        },
+        "intent_answer": {
+          "max_us": 21.228,
+          "mean_us": 1.679,
+          "median_us": 1.602,
+          "min_us": 1.548,
+          "n": 300,
+          "p90_us": 1.658,
+          "p99_us": 1.844
+        },
+        "streaming": {
+          "max_us": 24.307,
+          "mean_us": 8.166,
+          "median_us": 7.93,
+          "min_us": 7.745,
+          "n": 300,
+          "p90_us": 8.086,
+          "p99_us": 18.497
+        },
+        "wav_synthesis": {
+          "max_us": 54673.072,
+          "mean_us": 10243.526,
+          "median_us": 5986.958,
+          "min_us": 5562.076,
+          "n": 30,
+          "p90_us": 9495.782,
+          "p99_us": 54673.072
+        }
+      },
+      "total_median_us": 6703.136,
+      "transcript": "Hello there",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 600.0,
+        "frame_count": 30,
+        "sample_count": 4800,
+        "silence_frames": 6,
+        "speech_frames": 24,
+        "wav_bytes": 9644
+      },
+      "case_id": "B02",
+      "expected_intent": "time",
+      "expected_response": "The time is 10:30.",
+      "intent": "time",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 4,
+        "total_ms": 1200.0,
+        "tts_first_audio_ms": 120.0
+      },
+      "modelled_cloud_to_local_ratio": 200.87,
+      "response": "The time is 10:30.",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 600.0,
+        "frame_count": 30,
+        "sample_count": 4800,
+        "silence_frames": 6,
+        "speech_frames": 24,
+        "words": 4
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 674.202,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 2.413,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 13.029,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 5284.48,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 46844.48,
+          "mean_us": 1701.539,
+          "median_us": 674.202,
+          "min_us": 539.098,
+          "n": 99,
+          "p90_us": 1298.352,
+          "p99_us": 46844.48
+        },
+        "intent_answer": {
+          "max_us": 35.804,
+          "mean_us": 2.686,
+          "median_us": 2.413,
+          "min_us": 2.348,
+          "n": 300,
+          "p90_us": 2.473,
+          "p99_us": 13.253
+        },
+        "streaming": {
+          "max_us": 259.151,
+          "mean_us": 15.913,
+          "median_us": 13.029,
+          "min_us": 12.81,
+          "n": 300,
+          "p90_us": 13.485,
+          "p99_us": 52.884
+        },
+        "wav_synthesis": {
+          "max_us": 50825.874,
+          "mean_us": 10394.994,
+          "median_us": 5284.48,
+          "min_us": 4607.432,
+          "n": 30,
+          "p90_us": 19266.374,
+          "p99_us": 50825.874
+        }
+      },
+      "total_median_us": 5974.124,
+      "transcript": "What time is it",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 600.0,
+        "frame_count": 30,
+        "sample_count": 4800,
+        "silence_frames": 6,
+        "speech_frames": 24,
+        "wav_bytes": 9644
+      },
+      "case_id": "B03",
+      "expected_intent": "date",
+      "expected_response": "The date is 2026-11-05.",
+      "intent": "date",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 4,
+        "total_ms": 1200.0,
+        "tts_first_audio_ms": 120.0
+      },
+      "modelled_cloud_to_local_ratio": 208.877,
+      "response": "The date is 2026-11-05.",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 600.0,
+        "frame_count": 30,
+        "sample_count": 4800,
+        "silence_frames": 6,
+        "speech_frames": 24,
+        "words": 4
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 617.549,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 2.729,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 16.811,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 5108.377,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 45660.682,
+          "mean_us": 1612.418,
+          "median_us": 617.549,
+          "min_us": 537.951,
+          "n": 99,
+          "p90_us": 1306.053,
+          "p99_us": 45660.682
+        },
+        "intent_answer": {
+          "max_us": 17.249,
+          "mean_us": 2.903,
+          "median_us": 2.729,
+          "min_us": 2.665,
+          "n": 300,
+          "p90_us": 2.811,
+          "p99_us": 8.341
+        },
+        "streaming": {
+          "max_us": 40.654,
+          "mean_us": 17.791,
+          "median_us": 16.811,
+          "min_us": 16.517,
+          "n": 300,
+          "p90_us": 17.265,
+          "p99_us": 37.442
+        },
+        "wav_synthesis": {
+          "max_us": 40899.286,
+          "mean_us": 7337.53,
+          "median_us": 5108.377,
+          "min_us": 4695.134,
+          "n": 30,
+          "p90_us": 7127.797,
+          "p99_us": 40899.286
+        }
+      },
+      "total_median_us": 5745.466,
+      "transcript": "What is the date today",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 1400.0,
+        "frame_count": 70,
+        "sample_count": 11200,
+        "silence_frames": 16,
+        "speech_frames": 54,
+        "wav_bytes": 22444
+      },
+      "case_id": "B04",
+      "expected_intent": "weather",
+      "expected_response": "The weather in Toronto is clear, 12 degrees Celsius.",
+      "intent": "weather",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 9,
+        "total_ms": 1225.0,
+        "tts_first_audio_ms": 145.0
+      },
+      "modelled_cloud_to_local_ratio": 76.962,
+      "response": "The weather in Toronto is clear, 12 degrees Celsius.",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 1400.0,
+        "frame_count": 70,
+        "sample_count": 11200,
+        "silence_frames": 16,
+        "speech_frames": 54,
+        "words": 9
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 1651.591,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 4.101,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 23.932,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 14237.515,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 51560.881,
+          "mean_us": 3208.385,
+          "median_us": 1651.591,
+          "min_us": 1311.445,
+          "n": 99,
+          "p90_us": 4005.494,
+          "p99_us": 51560.881
+        },
+        "intent_answer": {
+          "max_us": 64.302,
+          "mean_us": 4.558,
+          "median_us": 4.101,
+          "min_us": 4.002,
+          "n": 300,
+          "p90_us": 4.202,
+          "p99_us": 14.569
+        },
+        "streaming": {
+          "max_us": 45119.927,
+          "mean_us": 178.778,
+          "median_us": 23.932,
+          "min_us": 22.739,
+          "n": 300,
+          "p90_us": 35.641,
+          "p99_us": 65.565
+        },
+        "wav_synthesis": {
+          "max_us": 80455.475,
+          "mean_us": 32292.449,
+          "median_us": 14237.515,
+          "min_us": 10263.323,
+          "n": 30,
+          "p90_us": 71856.323,
+          "p99_us": 80455.475
+        }
+      },
+      "total_median_us": 15917.139,
+      "transcript": "What is the weather in Toronto",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 1400.0,
+        "frame_count": 70,
+        "sample_count": 11200,
+        "silence_frames": 16,
+        "speech_frames": 54,
+        "wav_bytes": 22444
+      },
+      "case_id": "B05",
+      "expected_intent": "weather",
+      "expected_response": "The weather in Dhaka is humid, 29 degrees Celsius.",
+      "intent": "weather",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 9,
+        "total_ms": 1225.0,
+        "tts_first_audio_ms": 145.0
+      },
+      "modelled_cloud_to_local_ratio": 78.687,
+      "response": "The weather in Dhaka is humid, 29 degrees Celsius.",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 1400.0,
+        "frame_count": 70,
+        "sample_count": 11200,
+        "silence_frames": 16,
+        "speech_frames": 54,
+        "words": 9
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 1430.952,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 4.769,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 23.858,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 14107.977,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 61459.739,
+          "mean_us": 3938.497,
+          "median_us": 1430.952,
+          "min_us": 1308.052,
+          "n": 99,
+          "p90_us": 3508.102,
+          "p99_us": 61459.739
+        },
+        "intent_answer": {
+          "max_us": 289.065,
+          "mean_us": 7.143,
+          "median_us": 4.769,
+          "min_us": 4.624,
+          "n": 300,
+          "p90_us": 4.928,
+          "p99_us": 46.492
+        },
+        "streaming": {
+          "max_us": 588.08,
+          "mean_us": 30.013,
+          "median_us": 23.858,
+          "min_us": 23.433,
+          "n": 300,
+          "p90_us": 25.325,
+          "p99_us": 159.194
+        },
+        "wav_synthesis": {
+          "max_us": 70806.121,
+          "mean_us": 26963.173,
+          "median_us": 14107.977,
+          "min_us": 10717.754,
+          "n": 30,
+          "p90_us": 65665.842,
+          "p99_us": 70806.121
+        }
+      },
+      "total_median_us": 15567.556,
+      "transcript": "How is the weather in Dhaka",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 1400.0,
+        "frame_count": 70,
+        "sample_count": 11200,
+        "silence_frames": 16,
+        "speech_frames": 54,
+        "wav_bytes": 22444
+      },
+      "case_id": "B06",
+      "expected_intent": "weather",
+      "expected_response": "The weather in Toronto is clear, 12 degrees Celsius.",
+      "intent": "weather",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 9,
+        "total_ms": 1225.0,
+        "tts_first_audio_ms": 145.0
+      },
+      "modelled_cloud_to_local_ratio": 86.542,
+      "response": "The weather in Toronto is clear, 12 degrees Celsius.",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 1400.0,
+        "frame_count": 70,
+        "sample_count": 11200,
+        "silence_frames": 16,
+        "speech_frames": 54,
+        "words": 9
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 1354.96,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 4.363,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 15.386,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 12779.913,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 48933.143,
+          "mean_us": 2279.627,
+          "median_us": 1354.96,
+          "min_us": 1285.121,
+          "n": 99,
+          "p90_us": 1851.154,
+          "p99_us": 48933.143
+        },
+        "intent_answer": {
+          "max_us": 18.246,
+          "mean_us": 4.715,
+          "median_us": 4.363,
+          "min_us": 4.251,
+          "n": 300,
+          "p90_us": 4.513,
+          "p99_us": 10.312
+        },
+        "streaming": {
+          "max_us": 36.401,
+          "mean_us": 16.428,
+          "median_us": 15.386,
+          "min_us": 15.054,
+          "n": 300,
+          "p90_us": 18.734,
+          "p99_us": 33.873
+        },
+        "wav_synthesis": {
+          "max_us": 76727.42,
+          "mean_us": 25796.952,
+          "median_us": 12779.913,
+          "min_us": 10127.55,
+          "n": 30,
+          "p90_us": 61760.235,
+          "p99_us": 76727.42
+        }
+      },
+      "total_median_us": 14154.622,
+      "transcript": "What is the weather",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "wav_bytes": 12204
+      },
+      "case_id": "B07",
+      "expected_intent": "timer",
+      "expected_response": "Timer set for 300 seconds.",
+      "intent": "timer",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 5,
+        "total_ms": 1205.0,
+        "tts_first_audio_ms": 125.0
+      },
+      "modelled_cloud_to_local_ratio": 156.189,
+      "response": "Timer set for 300 seconds.",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "words": 5
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 711.609,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 4.195,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 21.783,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 6976.972,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 43836.237,
+          "mean_us": 1158.44,
+          "median_us": 711.609,
+          "min_us": 678.643,
+          "n": 99,
+          "p90_us": 755.221,
+          "p99_us": 43836.237
+        },
+        "intent_answer": {
+          "max_us": 1522.668,
+          "mean_us": 9.738,
+          "median_us": 4.195,
+          "min_us": 4.052,
+          "n": 300,
+          "p90_us": 4.347,
+          "p99_us": 20.416
+        },
+        "streaming": {
+          "max_us": 35882.801,
+          "mean_us": 153.22,
+          "median_us": 21.783,
+          "min_us": 21.406,
+          "n": 300,
+          "p90_us": 23.4,
+          "p99_us": 396.856
+        },
+        "wav_synthesis": {
+          "max_us": 50389.828,
+          "mean_us": 10204.258,
+          "median_us": 6976.972,
+          "min_us": 5589.235,
+          "n": 30,
+          "p90_us": 14976.701,
+          "p99_us": 50389.828
+        }
+      },
+      "total_median_us": 7714.559,
+      "transcript": "Set a timer for 5 minutes",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "wav_bytes": 12204
+      },
+      "case_id": "B08",
+      "expected_intent": "timer",
+      "expected_response": "Timer set for 30 seconds.",
+      "intent": "timer",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 5,
+        "total_ms": 1205.0,
+        "tts_first_audio_ms": 125.0
+      },
+      "modelled_cloud_to_local_ratio": 158.908,
+      "response": "Timer set for 30 seconds.",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "words": 5
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 1588.81,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 7.128,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 44.233,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 5942.406,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 34194.811,
+          "mean_us": 3201.213,
+          "median_us": 1588.81,
+          "min_us": 697.595,
+          "n": 99,
+          "p90_us": 5282.856,
+          "p99_us": 34194.811
+        },
+        "intent_answer": {
+          "max_us": 38.631,
+          "mean_us": 7.575,
+          "median_us": 7.128,
+          "min_us": 5.463,
+          "n": 300,
+          "p90_us": 8.262,
+          "p99_us": 29.604
+        },
+        "streaming": {
+          "max_us": 16140.206,
+          "mean_us": 112.169,
+          "median_us": 44.233,
+          "min_us": 21.791,
+          "n": 300,
+          "p90_us": 88.741,
+          "p99_us": 441.29
+        },
+        "wav_synthesis": {
+          "max_us": 44055.032,
+          "mean_us": 10203.479,
+          "median_us": 5942.406,
+          "min_us": 5546.201,
+          "n": 30,
+          "p90_us": 15057.537,
+          "p99_us": 44055.032
+        }
+      },
+      "total_median_us": 7582.577,
+      "transcript": "Set a timer for 30 seconds",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "wav_bytes": 12204
+      },
+      "case_id": "B09",
+      "expected_intent": "timer",
+      "expected_response": "Timer set for 120 seconds.",
+      "intent": "timer",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 5,
+        "total_ms": 1205.0,
+        "tts_first_audio_ms": 125.0
+      },
+      "modelled_cloud_to_local_ratio": 176.402,
+      "response": "Timer set for 120 seconds.",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "words": 5
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 766.212,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 4.149,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 21.874,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 6038.587,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 48225.212,
+          "mean_us": 2319.283,
+          "median_us": 766.212,
+          "min_us": 698.339,
+          "n": 99,
+          "p90_us": 3246.585,
+          "p99_us": 48225.212
+        },
+        "intent_answer": {
+          "max_us": 23.826,
+          "mean_us": 4.353,
+          "median_us": 4.149,
+          "min_us": 4.017,
+          "n": 300,
+          "p90_us": 4.293,
+          "p99_us": 11.515
+        },
+        "streaming": {
+          "max_us": 1256.194,
+          "mean_us": 32.054,
+          "median_us": 21.874,
+          "min_us": 21.456,
+          "n": 300,
+          "p90_us": 22.862,
+          "p99_us": 115.159
+        },
+        "wav_synthesis": {
+          "max_us": 57426.126,
+          "mean_us": 14429.269,
+          "median_us": 6038.587,
+          "min_us": 5536.326,
+          "n": 30,
+          "p90_us": 55069.828,
+          "p99_us": 57426.126
+        }
+      },
+      "total_median_us": 6830.822,
+      "transcript": "Set a timer for 2 minutes",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 1400.0,
+        "frame_count": 70,
+        "sample_count": 11200,
+        "silence_frames": 16,
+        "speech_frames": 54,
+        "wav_bytes": 22444
+      },
+      "case_id": "B10",
+      "expected_intent": "name",
+      "expected_response": "My name is Voice Lab, a teaching voice agent.",
+      "intent": "name",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 9,
+        "total_ms": 1225.0,
+        "tts_first_audio_ms": 145.0
+      },
+      "modelled_cloud_to_local_ratio": 87.375,
+      "response": "My name is Voice Lab, a teaching voice agent.",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 1400.0,
+        "frame_count": 70,
+        "sample_count": 11200,
+        "silence_frames": 16,
+        "speech_frames": 54,
+        "words": 9
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 1325.03,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 2.947,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 14.385,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 12677.557,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 50610.473,
+          "mean_us": 3171.238,
+          "median_us": 1325.03,
+          "min_us": 1262.481,
+          "n": 99,
+          "p90_us": 4327.608,
+          "p99_us": 50610.473
+        },
+        "intent_answer": {
+          "max_us": 19.624,
+          "mean_us": 3.132,
+          "median_us": 2.947,
+          "min_us": 2.849,
+          "n": 300,
+          "p90_us": 3.04,
+          "p99_us": 5.569
+        },
+        "streaming": {
+          "max_us": 136.378,
+          "mean_us": 15.385,
+          "median_us": 14.385,
+          "min_us": 14.159,
+          "n": 300,
+          "p90_us": 14.756,
+          "p99_us": 27.443
+        },
+        "wav_synthesis": {
+          "max_us": 63325.003,
+          "mean_us": 21445.207,
+          "median_us": 12677.557,
+          "min_us": 10074.345,
+          "n": 30,
+          "p90_us": 55115.831,
+          "p99_us": 63325.003
+        }
+      },
+      "total_median_us": 14019.919,
+      "transcript": "What is your name",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 2040.0,
+        "frame_count": 102,
+        "sample_count": 16320,
+        "silence_frames": 24,
+        "speech_frames": 78,
+        "wav_bytes": 32684
+      },
+      "case_id": "B11",
+      "expected_intent": "help",
+      "expected_response": "You can ask for the time, the date, the weather, or a timer.",
+      "intent": "help",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 13,
+        "total_ms": 1245.0,
+        "tts_first_audio_ms": 165.0
+      },
+      "modelled_cloud_to_local_ratio": 29.865,
+      "response": "You can ask for the time, the date, the weather, or a timer.",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 2040.0,
+        "frame_count": 102,
+        "sample_count": 16320,
+        "silence_frames": 24,
+        "speech_frames": 78,
+        "words": 13
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 3586.266,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 2.755,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 14.511,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 38084.55,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 52587.76,
+          "mean_us": 5472.658,
+          "median_us": 3586.266,
+          "min_us": 1847.086,
+          "n": 99,
+          "p90_us": 5149.527,
+          "p99_us": 52587.76
+        },
+        "intent_answer": {
+          "max_us": 9.205,
+          "mean_us": 2.787,
+          "median_us": 2.755,
+          "min_us": 2.663,
+          "n": 300,
+          "p90_us": 2.825,
+          "p99_us": 3.113
+        },
+        "streaming": {
+          "max_us": 283.096,
+          "mean_us": 17.307,
+          "median_us": 14.511,
+          "min_us": 14.245,
+          "n": 300,
+          "p90_us": 14.807,
+          "p99_us": 134.581
+        },
+        "wav_synthesis": {
+          "max_us": 169298.914,
+          "mean_us": 50188.446,
+          "median_us": 38084.55,
+          "min_us": 14934.897,
+          "n": 30,
+          "p90_us": 83890.506,
+          "p99_us": 169298.914
+        }
+      },
+      "total_median_us": 41688.082,
+      "transcript": "What can you do",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 120.0,
+        "frame_count": 6,
+        "sample_count": 960,
+        "silence_frames": 0,
+        "speech_frames": 6,
+        "wav_bytes": 1964
+      },
+      "case_id": "B12",
+      "expected_intent": "goodbye",
+      "expected_response": "Goodbye.",
+      "intent": "goodbye",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 1,
+        "total_ms": 1185.0,
+        "tts_first_audio_ms": 105.0
+      },
+      "modelled_cloud_to_local_ratio": 994.128,
+      "response": "Goodbye.",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 120.0,
+        "frame_count": 6,
+        "sample_count": 960,
+        "silence_frames": 0,
+        "speech_frames": 6,
+        "words": 1
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 121.143,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 2.588,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 11.504,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 1056.31,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 39145.097,
+          "mean_us": 522.386,
+          "median_us": 121.143,
+          "min_us": 119.088,
+          "n": 99,
+          "p90_us": 138.96,
+          "p99_us": 39145.097
+        },
+        "intent_answer": {
+          "max_us": 17.465,
+          "mean_us": 2.691,
+          "median_us": 2.588,
+          "min_us": 2.509,
+          "n": 300,
+          "p90_us": 2.668,
+          "p99_us": 2.949
+        },
+        "streaming": {
+          "max_us": 228.8,
+          "mean_us": 13.594,
+          "median_us": 11.504,
+          "min_us": 11.251,
+          "n": 300,
+          "p90_us": 11.729,
+          "p99_us": 44.725
+        },
+        "wav_synthesis": {
+          "max_us": 18138.121,
+          "mean_us": 3198.597,
+          "median_us": 1056.31,
+          "min_us": 1033.25,
+          "n": 30,
+          "p90_us": 10179.395,
+          "p99_us": 18138.121
+        }
+      },
+      "total_median_us": 1191.545,
+      "transcript": "Goodbye for now",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 2680.0,
+        "frame_count": 134,
+        "sample_count": 21440,
+        "silence_frames": 32,
+        "speech_frames": 102,
+        "wav_bytes": 42924
+      },
+      "case_id": "B13",
+      "expected_intent": "unknown",
+      "expected_response": "I do not know that yet. Ask for the time, the date, the weather, or a timer.",
+      "intent": "unknown",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 17,
+        "total_ms": 1265.0,
+        "tts_first_audio_ms": 185.0
+      },
+      "modelled_cloud_to_local_ratio": 47.58,
+      "response": "I do not know that yet. Ask for the time, the date, the weather, or a timer.",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 2680.0,
+        "frame_count": 134,
+        "sample_count": 21440,
+        "silence_frames": 32,
+        "speech_frames": 102,
+        "words": 17
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 3571.236,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 3.348,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 18.234,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 22994.106,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 35551.697,
+          "mean_us": 6202.029,
+          "median_us": 3571.236,
+          "min_us": 2465.699,
+          "n": 99,
+          "p90_us": 12854.876,
+          "p99_us": 35551.697
+        },
+        "intent_answer": {
+          "max_us": 44.644,
+          "mean_us": 3.653,
+          "median_us": 3.348,
+          "min_us": 3.256,
+          "n": 300,
+          "p90_us": 3.411,
+          "p99_us": 15.314
+        },
+        "streaming": {
+          "max_us": 180.452,
+          "mean_us": 19.977,
+          "median_us": 18.234,
+          "min_us": 18.015,
+          "n": 300,
+          "p90_us": 18.46,
+          "p99_us": 39.551
+        },
+        "wav_synthesis": {
+          "max_us": 85060.367,
+          "mean_us": 35524.427,
+          "median_us": 22994.106,
+          "min_us": 19969.31,
+          "n": 30,
+          "p90_us": 76922.542,
+          "p99_us": 85060.367
+        }
+      },
+      "total_median_us": 26586.924,
+      "transcript": "Tell me about quantum tunneling",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "wav_bytes": 12204
+      },
+      "case_id": "B14",
+      "expected_intent": "greeting",
+      "expected_response": "Hello. How can I help?",
+      "intent": "greeting",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 5,
+        "total_ms": 1205.0,
+        "tts_first_audio_ms": 125.0
+      },
+      "modelled_cloud_to_local_ratio": 173.932,
+      "response": "Hello. How can I help?",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "words": 5
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 738.033,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 1.645,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 8.018,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 6180.132,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 42785.983,
+          "mean_us": 2010.686,
+          "median_us": 738.033,
+          "min_us": 680.802,
+          "n": 99,
+          "p90_us": 1558.606,
+          "p99_us": 42785.983
+        },
+        "intent_answer": {
+          "max_us": 63.097,
+          "mean_us": 1.915,
+          "median_us": 1.645,
+          "min_us": 1.59,
+          "n": 300,
+          "p90_us": 1.717,
+          "p99_us": 2.115
+        },
+        "streaming": {
+          "max_us": 70.271,
+          "mean_us": 8.717,
+          "median_us": 8.018,
+          "min_us": 7.821,
+          "n": 300,
+          "p90_us": 8.206,
+          "p99_us": 22.659
+        },
+        "wav_synthesis": {
+          "max_us": 51045.532,
+          "mean_us": 11771.057,
+          "median_us": 6180.132,
+          "min_us": 5566.47,
+          "n": 30,
+          "p90_us": 32624.489,
+          "p99_us": 51045.532
+        }
+      },
+      "total_median_us": 6927.828,
+      "transcript": "Hi there",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "wav_bytes": 12204
+      },
+      "case_id": "B15",
+      "expected_intent": "timer",
+      "expected_response": "Timer set for 90 seconds.",
+      "intent": "timer",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 5,
+        "total_ms": 1205.0,
+        "tts_first_audio_ms": 125.0
+      },
+      "modelled_cloud_to_local_ratio": 185.527,
+      "response": "Timer set for 90 seconds.",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "words": 5
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 720.043,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 4.176,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 21.831,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 5748.684,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 41910.984,
+          "mean_us": 1197.362,
+          "median_us": 720.043,
+          "min_us": 677.97,
+          "n": 99,
+          "p90_us": 790.884,
+          "p99_us": 41910.984
+        },
+        "intent_answer": {
+          "max_us": 18.93,
+          "mean_us": 4.274,
+          "median_us": 4.176,
+          "min_us": 3.959,
+          "n": 300,
+          "p90_us": 4.266,
+          "p99_us": 4.689
+        },
+        "streaming": {
+          "max_us": 418.942,
+          "mean_us": 25.078,
+          "median_us": 21.831,
+          "min_us": 21.356,
+          "n": 300,
+          "p90_us": 22.978,
+          "p99_us": 70.833
+        },
+        "wav_synthesis": {
+          "max_us": 47155.991,
+          "mean_us": 8211.933,
+          "median_us": 5748.684,
+          "min_us": 5512.456,
+          "n": 30,
+          "p90_us": 6139.499,
+          "p99_us": 47155.991
+        }
+      },
+      "total_median_us": 6494.734,
+      "transcript": "Set a timer for 90 seconds",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 1400.0,
+        "frame_count": 70,
+        "sample_count": 11200,
+        "silence_frames": 16,
+        "speech_frames": 54,
+        "wav_bytes": 22444
+      },
+      "case_id": "B16",
+      "expected_intent": "weather",
+      "expected_response": "The weather in Dhaka is humid, 29 degrees Celsius.",
+      "intent": "weather",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 9,
+        "total_ms": 1225.0,
+        "tts_first_audio_ms": 145.0
+      },
+      "modelled_cloud_to_local_ratio": 99.408,
+      "response": "The weather in Dhaka is humid, 29 degrees Celsius.",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 1400.0,
+        "frame_count": 70,
+        "sample_count": 11200,
+        "silence_frames": 16,
+        "speech_frames": 54,
+        "words": 9
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 1366.203,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 4.924,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 28.461,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 10923.665,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 56403.225,
+          "mean_us": 3168.707,
+          "median_us": 1366.203,
+          "min_us": 1273.391,
+          "n": 99,
+          "p90_us": 2404.583,
+          "p99_us": 56403.225
+        },
+        "intent_answer": {
+          "max_us": 17.912,
+          "mean_us": 5.016,
+          "median_us": 4.924,
+          "min_us": 4.82,
+          "n": 300,
+          "p90_us": 5.023,
+          "p99_us": 5.389
+        },
+        "streaming": {
+          "max_us": 291.814,
+          "mean_us": 34.175,
+          "median_us": 28.461,
+          "min_us": 28.041,
+          "n": 300,
+          "p90_us": 30.637,
+          "p99_us": 243.04
+        },
+        "wav_synthesis": {
+          "max_us": 53625.393,
+          "mean_us": 18036.482,
+          "median_us": 10923.665,
+          "min_us": 10082.34,
+          "n": 30,
+          "p90_us": 45694.574,
+          "p99_us": 53625.393
+        }
+      },
+      "total_median_us": 12323.253,
+      "transcript": "What is the weather in Dhaka today",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 1080.0,
+        "frame_count": 54,
+        "sample_count": 8640,
+        "silence_frames": 12,
+        "speech_frames": 42,
+        "wav_bytes": 17324
+      },
+      "case_id": "B17",
+      "expected_intent": "timer",
+      "expected_response": "I need a number for the timer.",
+      "intent": "timer",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 7,
+        "total_ms": 1215.0,
+        "tts_first_audio_ms": 135.0
+      },
+      "modelled_cloud_to_local_ratio": 109.865,
+      "response": "I need a number for the timer.",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 1080.0,
+        "frame_count": 54,
+        "sample_count": 8640,
+        "silence_frames": 12,
+        "speech_frames": 42,
+        "words": 7
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 1034.638,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 2.964,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 14.596,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 10006.883,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 53902.089,
+          "mean_us": 2771.805,
+          "median_us": 1034.638,
+          "min_us": 981.919,
+          "n": 99,
+          "p90_us": 2868.319,
+          "p99_us": 53902.089
+        },
+        "intent_answer": {
+          "max_us": 18.079,
+          "mean_us": 3.036,
+          "median_us": 2.964,
+          "min_us": 2.878,
+          "n": 300,
+          "p90_us": 3.055,
+          "p99_us": 3.427
+        },
+        "streaming": {
+          "max_us": 1512.142,
+          "mean_us": 21.178,
+          "median_us": 14.596,
+          "min_us": 14.272,
+          "n": 300,
+          "p90_us": 14.864,
+          "p99_us": 37.831
+        },
+        "wav_synthesis": {
+          "max_us": 56267.914,
+          "mean_us": 16719.905,
+          "median_us": 10006.883,
+          "min_us": 7784.476,
+          "n": 30,
+          "p90_us": 50327.798,
+          "p99_us": 56267.914
+        }
+      },
+      "total_median_us": 11059.081,
+      "transcript": "Please set a timer",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 120.0,
+        "frame_count": 6,
+        "sample_count": 960,
+        "silence_frames": 0,
+        "speech_frames": 6,
+        "wav_bytes": 1964
+      },
+      "case_id": "B18",
+      "expected_intent": "goodbye",
+      "expected_response": "Goodbye.",
+      "intent": "goodbye",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 1,
+        "total_ms": 1185.0,
+        "tts_first_audio_ms": 105.0
+      },
+      "modelled_cloud_to_local_ratio": 1010.23,
+      "response": "Goodbye.",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 120.0,
+        "frame_count": 6,
+        "sample_count": 960,
+        "silence_frames": 0,
+        "speech_frames": 6,
+        "words": 1
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 120.427,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 2.409,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 9.058,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 1040.608,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 38533.844,
+          "mean_us": 512.485,
+          "median_us": 120.427,
+          "min_us": 115.339,
+          "n": 99,
+          "p90_us": 135.297,
+          "p99_us": 38533.844
+        },
+        "intent_answer": {
+          "max_us": 17.479,
+          "mean_us": 2.511,
+          "median_us": 2.409,
+          "min_us": 2.328,
+          "n": 300,
+          "p90_us": 2.487,
+          "p99_us": 2.764
+        },
+        "streaming": {
+          "max_us": 77.54,
+          "mean_us": 9.548,
+          "median_us": 9.058,
+          "min_us": 8.81,
+          "n": 300,
+          "p90_us": 9.239,
+          "p99_us": 23.677
+        },
+        "wav_synthesis": {
+          "max_us": 1072.347,
+          "mean_us": 1044.045,
+          "median_us": 1040.608,
+          "min_us": 1037.113,
+          "n": 30,
+          "p90_us": 1059.865,
+          "p99_us": 1072.347
+        }
+      },
+      "total_median_us": 1172.502,
+      "transcript": "Bye now",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "wav_bytes": 12204
+      },
+      "case_id": "B19",
+      "expected_intent": "greeting",
+      "expected_response": "Hello. How can I help?",
+      "intent": "greeting",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 5,
+        "total_ms": 1205.0,
+        "tts_first_audio_ms": 125.0
+      },
+      "modelled_cloud_to_local_ratio": 188.252,
+      "response": "Hello. How can I help?",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 760.0,
+        "frame_count": 38,
+        "sample_count": 6080,
+        "silence_frames": 8,
+        "speech_frames": 30,
+        "words": 5
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 720.378,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 1.521,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 6.078,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 5673.191,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 51036.412,
+          "mean_us": 1720.928,
+          "median_us": 720.378,
+          "min_us": 692.167,
+          "n": 99,
+          "p90_us": 990.343,
+          "p99_us": 51036.412
+        },
+        "intent_answer": {
+          "max_us": 17.812,
+          "mean_us": 1.591,
+          "median_us": 1.521,
+          "min_us": 1.475,
+          "n": 300,
+          "p90_us": 1.576,
+          "p99_us": 1.906
+        },
+        "streaming": {
+          "max_us": 261.094,
+          "mean_us": 7.004,
+          "median_us": 6.078,
+          "min_us": 5.955,
+          "n": 300,
+          "p90_us": 6.184,
+          "p99_us": 7.419
+        },
+        "wav_synthesis": {
+          "max_us": 42804.358,
+          "mean_us": 9702.182,
+          "median_us": 5673.191,
+          "min_us": 5490.259,
+          "n": 30,
+          "p90_us": 15752.249,
+          "p99_us": 42804.358
+        }
+      },
+      "total_median_us": 6401.168,
+      "transcript": "Hey",
+      "within_budget": true,
+      "within_ceiling": true
+    },
+    {
+      "audio": {
+        "duration_ms": 600.0,
+        "frame_count": 30,
+        "sample_count": 4800,
+        "silence_frames": 6,
+        "speech_frames": 24,
+        "wav_bytes": 9644
+      },
+      "case_id": "B20",
+      "expected_intent": "time",
+      "expected_response": "The time is 10:30.",
+      "intent": "time",
+      "intent_correct": true,
+      "modelled_cloud": {
+        "asr_final_ms": 300.0,
+        "label": "modelled, not measured",
+        "llm_answer_ms": 700.0,
+        "network_rtt_ms": 80.0,
+        "response_words": 4,
+        "total_ms": 1200.0,
+        "tts_first_audio_ms": 120.0
+      },
+      "modelled_cloud_to_local_ratio": 187.793,
+      "response": "The time is 10:30.",
+      "response_correct": true,
+      "size": {
+        "duration_ms": 600.0,
+        "frame_count": 30,
+        "sample_count": 4800,
+        "silence_frames": 6,
+        "speech_frames": 24,
+        "words": 4
+      },
+      "stage_shares": {
+        "frame_vad": {
+          "median_us": 563.574,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "intent_answer": {
+          "median_us": 2.625,
+          "stage_budget_us": 5000.0,
+          "within_stage_budget": true
+        },
+        "streaming": {
+          "median_us": 18.12,
+          "stage_budget_us": 10000.0,
+          "within_stage_budget": true
+        },
+        "wav_synthesis": {
+          "median_us": 5805.211,
+          "stage_budget_us": 70000.0,
+          "within_stage_budget": true
+        }
+      },
+      "stage_us": {
+        "frame_vad": {
+          "max_us": 46714.446,
+          "mean_us": 1091.151,
+          "median_us": 563.574,
+          "min_us": 537.968,
+          "n": 99,
+          "p90_us": 637.738,
+          "p99_us": 46714.446
+        },
+        "intent_answer": {
+          "max_us": 13.337,
+          "mean_us": 2.672,
+          "median_us": 2.625,
+          "min_us": 2.545,
+          "n": 300,
+          "p90_us": 2.7,
+          "p99_us": 2.997
+        },
+        "streaming": {
+          "max_us": 104.462,
+          "mean_us": 19.41,
+          "median_us": 18.12,
+          "min_us": 17.824,
+          "n": 300,
+          "p90_us": 18.45,
+          "p99_us": 54.342
+        },
+        "wav_synthesis": {
+          "max_us": 53693.265,
+          "mean_us": 11294.069,
+          "median_us": 5805.211,
+          "min_us": 4399.768,
+          "n": 30,
+          "p90_us": 25950.141,
+          "p99_us": 53693.265
+        }
+      },
+      "total_median_us": 6389.53,
+      "transcript": "What time is it in Toronto",
+      "within_budget": true,
+      "within_ceiling": true
+    }
+  ],
+  "ceiling_us": 500000.0,
+  "label": "latency budget study on CPU: measured local stage latencies for the Build voice pipeline (frame and VAD split, streaming partial intent tracing, Learn rule intent and answer reused by import, tone WAV synthesis, barge-in over audio frames; no ASR model, no TTS model, no LLM), modelled cloud pipeline from stated constants (modelled only, never measured), Muse VM, standard library only",
+  "level": "3-deep",
+  "method": "Each local stage call is timed individually with time.perf_counter_ns after warmup, in 3 repeated batches whose per-call samples are pooled; per stage and case the file reports n, mean, median, p90, p99, min, max in microseconds (nearest-rank percentiles). Sample counts: intent and answer 300, streaming 300, frame and VAD 100, WAV synthesis 30, barge-in drop 60, barge-in full 20; barge-in setups run untimed per call. Latency fields are measured and vary between runs, so this file is NOT byte-identical across runs; deterministic fields (correctness, counts, sizes, modelled totals) are identical across runs. Cloud figures are modelled from stated constants only: network 80 ms, ASR final 300 ms, LLM answer 700 ms, TTS 100 ms plus 5 ms per response word.",
+  "samples_per_stage": {
+    "barge_drop": 60,
+    "barge_full": 20,
+    "frame_vad": 100,
+    "intent_answer": 300,
+    "streaming": 300,
+    "wav_synthesis": 30
+  },
+  "summary": {
+    "barge_drop_within_budget": 3,
+    "barge_in_frames_dropped": 165,
+    "barge_in_scenarios": 3,
+    "cases": 20,
+    "dominant_stage_cases": 20,
+    "intent_correct": 20,
+    "max_total_median_us": 41688.082,
+    "mean_total_median_us": 11022.228,
+    "median_total_median_us": 7255.203,
+    "modelled_cloud_mean_ms": 1212.75,
+    "response_correct": 20,
+    "within_budget": 20,
+    "within_ceiling": 20
+  }
+}
