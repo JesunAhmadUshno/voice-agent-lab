@@ -2,8 +2,8 @@
 
 Real-time voice agents: speech in, LLM answer, speech out, a latency budget study.
 
-Status: Learn DONE and Build DONE (2026-11-05, ROADMAP-V3-BATCH). Deep NOT STARTED.
-Project: P18. Fleet node: BlackBox (GPU). Wave: Wave 7. Learn ran on the Muse VM (CPU) with BlackBox unreachable. Build also ran on the Muse VM (CPU): BlackBox was ON this cycle, but the Build scope has no GPU step. See the level READMEs for the named deductions.
+Status: Learn DONE, Build DONE, and Deep DONE (2026-11-05, ROADMAP-V3-BATCH). v1.0 shipped.
+Project: P18. Fleet node: BlackBox (GPU). Wave: Wave 7. Learn ran on the Muse VM (CPU) with BlackBox unreachable. Build and Deep also ran on the Muse VM (CPU): neither scope has a GPU step. See the level READMEs for the named deductions.
 
 ## Start here
 
@@ -16,7 +16,7 @@ Project: P18. Fleet node: BlackBox (GPU). Wave: Wave 7. Learn ran on the Muse VM
 
 - Level 1, Learn: the core idea, built small and clean, with a teaching path. DONE.
 - Level 2, Build: a real working system other people can run. DONE.
-- Level 3, Deep: benchmarks, optimization, evaluation, hard cases. Not started.
+- Level 3, Deep: benchmarks, optimization, evaluation, hard cases. DONE.
 
 ## Benchmarks
 
@@ -50,6 +50,22 @@ Measured 2026-11-05 with level-2-build/run_build.py on the Muse VM (CPU, Python 
 | WAV synthesized for single responses | 323440 bytes, 20160.0 ms, 1008 frames of 20 ms |
 | Barge-in scenarios | 3, with 165 unplayed audio frames dropped in total (60 plus 101 plus 4) |
 | Unit tests | 53 passed (30 Learn, 23 Build), plus the scaffold smoke test |
+
+### Deep (Level 3)
+
+Measured 2026-11-05 with level-3-deep/run_deep.py on the Muse VM (CPU, Python 3.12.3, standard library only). A latency budget study: every stage that runs locally is timed individually with time.perf_counter_ns (pooled per-call samples over 3 batches, medians and nearest-rank percentiles), and a cloud pipeline built only from stated constants is modelled next to it (modelled only, never measured, no cloud service called). No ASR model, no TTS model, and no LLM ran; the substitutions are named again in level-3-deep/DEEP-SPEC.md. The results file contains measured timings and is not byte-identical across runs; its deterministic fields are identical across runs. The rest of the v2 Deep scope is the v1.1 backlog in ROADMAP.md. Full budget table, failure modes, and grade (7,700 of 10,000) are in level-3-deep/README.md.
+
+| Test | Result |
+| --- | --- |
+| Cases | 20 labelled turns plus 3 barge-in scenarios |
+| Intent and exact response | 20 of 20 |
+| Dominant stage | WAV synthesis in 20 of 20 cases |
+| Total local latency, median case (sum of stage medians) | 7255.203 microseconds |
+| Total local latency, max case median | 41688.082 microseconds |
+| Within the 100 ms local budget (medians) | 20 of 20 |
+| Barge-in drop path median | at most 75.864 microseconds, 165 frames dropped in total |
+| Modelled cloud total (modelled only) | mean 1212.75 ms, 29.865 to 1010.23 times the local totals |
+| Unit tests | 70 passed (30 Learn, 23 Build, 17 Deep), plus the scaffold smoke test |
 
 ## Novelty
 

@@ -26,6 +26,48 @@ step, no GPU run (BlackBox unreachable, NEEDS-BLACKBOX-ON), and
 Build and Deep are not started. Full method, tables, failure
 modes, and the Jev gate record are in level-1-learn/README.md.
 
+Shipped state (2026-11-05, v0.5): Build is DONE. An end-to-end
+voice loop: streaming transcript partials in, the Learn rule
+answer reused by import with dialogue state on top, and
+tone-synthesized WAV out (real WAV data at 8000 Hz, no
+intelligible speech): 20 of 20 single-turn intents and exact
+responses, 13 of 13 dialogue turns, intent 16 of 20 through a
+deterministic simulated ASR noise map (mean WER 0.0826), 323440
+WAV bytes over 1008 frames of 20 ms, 3 barge-in scenarios
+dropping 165 frames, 53 unit tests plus smoke (grade 7,500 of
+10,000). Substitutions named: no ASR model, no TTS voice, no
+LLM. Full record in level-2-build/README.md.
+
+Shipped state (2026-11-05, v1.0): Deep is DONE, and v1.0 is
+the ship state of the project. A latency budget study of the
+Build pipeline: every local stage timed individually with
+time.perf_counter_ns on the Muse VM (pooled per-call samples,
+medians and nearest-rank percentiles). WAV synthesis is the
+dominant stage in 20 of 20 cases (median of medians 6109.360
+microseconds, about 89 percent of the mean total); frame and
+VAD split is second (752.122); streaming tracing (16.099) and
+intent plus answer (2.955) are negligible. Median case total
+7255.203 microseconds, max case median 41688.082, 20 of 20
+within the 100 ms local budget on medians; tails on the
+shared VM spike far above the medians (WAV p99 up to
+169298.914 microseconds) and are written as a failure mode.
+Barge-in drop medians are at most 75.864 microseconds with
+165 frames dropped in total. The cloud side is modelled only,
+from stated constants (network 80 ms, ASR final 300 ms, LLM
+answer 700 ms, TTS 100 ms plus 5 ms per word; mean modelled
+total 1212.75 ms, 29.865 to 1010.23 times the measured local
+totals), never measured. 70 unit tests plus smoke (grade
+7,700 of 10,000). Full budget table, failure modes, and the
+Jev gate record are in level-3-deep/README.md.
+
 ## Future
 
-Open problems and the project's next steps sit in the Deep level scope in SPEC.md. Any forecast about this field is [unverified] unless a dated primary source is added here at the wave update.
+The rest of the v2 Deep scope is the v1.1 backlog in
+ROADMAP.md at the repo root: streaming synthesis with
+time-to-first-frame measurement, real local ASR and TTS
+swap-ins behind the same stage interface, a measured (not
+modelled) cloud comparison where a free tier allows it,
+concurrent sessions, a tail-latency budget on a quiet
+machine, a device path, an LLM answer step, and larger real
+workloads. Any forecast about this field is [unverified]
+unless a dated primary source is added here.
