@@ -2,8 +2,8 @@
 
 Real-time voice agents: speech in, LLM answer, speech out, a latency budget study.
 
-Status: Learn DONE (2026-11-05, ROADMAP-V3-BATCH). Build and Deep NOT STARTED.
-Project: P18. Fleet node: BlackBox (GPU). Wave: Wave 7. Learn ran on the Muse VM (CPU); BlackBox was unreachable this cycle (NEEDS-BLACKBOX-ON). See the Learn README for the named deduction.
+Status: Learn DONE and Build DONE (2026-11-05, ROADMAP-V3-BATCH). Deep NOT STARTED.
+Project: P18. Fleet node: BlackBox (GPU). Wave: Wave 7. Learn ran on the Muse VM (CPU) with BlackBox unreachable. Build also ran on the Muse VM (CPU): BlackBox was ON this cycle, but the Build scope has no GPU step. See the level READMEs for the named deductions.
 
 ## Start here
 
@@ -15,7 +15,7 @@ Project: P18. Fleet node: BlackBox (GPU). Wave: Wave 7. Learn ran on the Muse VM
 ## Level map
 
 - Level 1, Learn: the core idea, built small and clean, with a teaching path. DONE.
-- Level 2, Build: a real working system other people can run. Not started.
+- Level 2, Build: a real working system other people can run. DONE.
 - Level 3, Deep: benchmarks, optimization, evaluation, hard cases. Not started.
 
 ## Benchmarks
@@ -34,6 +34,22 @@ Measured 2026-11-05 with level-1-learn/run_learn.py on the Muse VM (CPU, Python 
 | Within 5000 microsecond budget | 12 of 12 |
 | Barge-in scenarios | 2, with 5 unplayed frames dropped in total (1 plus 4) |
 | Unit tests | 30 passed, plus the scaffold smoke test |
+
+### Build (Level 2)
+
+Measured 2026-11-05 with level-2-build/run_build.py on the Muse VM (CPU, Python 3.12.3, standard library only). The loop runs end to end: streaming transcript partials in, the Learn rule answer reused by import with dialogue state on top (weather follow-ups, timer slot filling, repeat), and tone-synthesized WAV out (real WAV data at 8000 Hz, no intelligible speech). No ASR model, no TTS model, and no LLM ran; the substitutions are named in level-2-build/BUILD-SPEC.md. The results file holds no wall-clock field and is byte-identical across runs. Full per-case tables, dialogue turns, noise runs, failure modes, and grade (7,500 of 10,000) are in level-2-build/README.md.
+
+| Test | Result |
+| --- | --- |
+| Single turns | 20 labelled cases |
+| Intent accuracy, single | 20 of 20 |
+| Exact response match, single | 20 of 20 |
+| Dialogue turns | 13 turns in 5 dialogues |
+| Intent and response, dialogues | 13 of 13 |
+| Intent through simulated ASR noise | 16 of 20 (mean WER 0.0826, all 4 failures on weather cases) |
+| WAV synthesized for single responses | 323440 bytes, 20160.0 ms, 1008 frames of 20 ms |
+| Barge-in scenarios | 3, with 165 unplayed audio frames dropped in total (60 plus 101 plus 4) |
+| Unit tests | 53 passed (30 Learn, 23 Build), plus the scaffold smoke test |
 
 ## Novelty
 
