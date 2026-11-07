@@ -42,8 +42,9 @@ fleet-node deduction.
    time.perf_counter_ns, after 3 untimed warmup calls, in 3
    repeated batches whose per-call samples are pooled. Sample
    counts per case: intent and answer 300, streaming 300,
-   frame and VAD 100, WAV synthesis 30, barge-in drop 60,
-   barge-in full 20 requested (18 pooled: 3 batches of 6).
+   frame and VAD 100 requested (99 pooled: 3 batches of 33),
+   WAV synthesis 30, barge-in drop 60, barge-in full 20
+   requested (18 pooled: 3 batches of 6).
    Per stage and case the results file reports n, mean,
    median, p90, p99, min, and max in microseconds.
    Percentiles are nearest-rank.
@@ -188,9 +189,23 @@ hidden_files/jev-p18-deep-claim-spec-2026-11-05.json and
 hidden_files/jev-p18-deep-claim-results-2026-11-05.json in
 the goal workspace.
 
+## Add-on probes (results_probes.json)
+
+level-3-deep/run_probes.py adds three cheap probes without
+touching results_deep.json: the stage timings re-measured 5
+times (between-run spread on one machine), sine-loop synthesis
+time for the first word against the whole response (ROADMAP
+v1.1 item 1, for the tone loop only), and the frozen keyword
+rule scored on 20 held-out paraphrases (cases_paraphrase.json).
+They ran on a different machine from the shipped Deep run (the
+machine is recorded in the file), so their absolute timings are
+not comparable with the Muse VM numbers above; the stage
+ordering and the paraphrase score are what carry over.
+
 ## Run it
 
     python level-3-deep/run_deep.py
+    python level-3-deep/run_probes.py
     python -m unittest tests.test_deep_voice_agent -v
     python -m unittest discover -s tests -v
     python tests/test_smoke.py

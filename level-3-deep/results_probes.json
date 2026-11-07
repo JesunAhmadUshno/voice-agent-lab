@@ -1,0 +1,426 @@
+{
+  "label": "add-on probes to the Deep study: repeated-run variance of the measured local stage timings, sine-loop time to first word, and a held-out paraphrase probe of the keyword rule. No ASR model, no TTS model, no LLM. Timings are measured on this machine.",
+  "machine": {
+    "machine": "aarch64",
+    "platform": "Linux-6.17.0-1014-nvidia-aarch64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "paraphrase": {
+    "cases": [
+      {
+        "case_id": "P01",
+        "expected_intent": "greeting",
+        "intent": "unknown",
+        "intent_correct": false,
+        "transcript": "Good morning"
+      },
+      {
+        "case_id": "P02",
+        "expected_intent": "greeting",
+        "intent": "greeting",
+        "intent_correct": true,
+        "transcript": "Hey, how are you"
+      },
+      {
+        "case_id": "P03",
+        "expected_intent": "time",
+        "intent": "unknown",
+        "intent_correct": false,
+        "transcript": "What hour is it"
+      },
+      {
+        "case_id": "P04",
+        "expected_intent": "time",
+        "intent": "time",
+        "intent_correct": true,
+        "transcript": "Do you have the time"
+      },
+      {
+        "case_id": "P05",
+        "expected_intent": "date",
+        "intent": "date",
+        "intent_correct": true,
+        "transcript": "What is today's date"
+      },
+      {
+        "case_id": "P06",
+        "expected_intent": "date",
+        "intent": "unknown",
+        "intent_correct": false,
+        "transcript": "What day is it today"
+      },
+      {
+        "case_id": "P07",
+        "expected_intent": "weather",
+        "intent": "unknown",
+        "intent_correct": false,
+        "transcript": "Is it going to rain in Dhaka"
+      },
+      {
+        "case_id": "P08",
+        "expected_intent": "weather",
+        "intent": "weather",
+        "intent_correct": true,
+        "transcript": "How is the weather looking in Dhaka"
+      },
+      {
+        "case_id": "P09",
+        "expected_intent": "weather",
+        "intent": "unknown",
+        "intent_correct": false,
+        "transcript": "What is it like outside"
+      },
+      {
+        "case_id": "P10",
+        "expected_intent": "timer",
+        "intent": "unknown",
+        "intent_correct": false,
+        "transcript": "Remind me in 10 minutes"
+      },
+      {
+        "case_id": "P11",
+        "expected_intent": "timer",
+        "intent": "timer",
+        "intent_correct": true,
+        "transcript": "Start a 2 minute timer"
+      },
+      {
+        "case_id": "P12",
+        "expected_intent": "name",
+        "intent": "unknown",
+        "intent_correct": false,
+        "transcript": "Who are you"
+      },
+      {
+        "case_id": "P13",
+        "expected_intent": "name",
+        "intent": "name",
+        "intent_correct": true,
+        "transcript": "Tell me your name please"
+      },
+      {
+        "case_id": "P14",
+        "expected_intent": "help",
+        "intent": "unknown",
+        "intent_correct": false,
+        "transcript": "What are my options"
+      },
+      {
+        "case_id": "P15",
+        "expected_intent": "help",
+        "intent": "help",
+        "intent_correct": true,
+        "transcript": "I need some help"
+      },
+      {
+        "case_id": "P16",
+        "expected_intent": "goodbye",
+        "intent": "unknown",
+        "intent_correct": false,
+        "transcript": "See you later"
+      },
+      {
+        "case_id": "P17",
+        "expected_intent": "goodbye",
+        "intent": "goodbye",
+        "intent_correct": true,
+        "transcript": "Okay bye for now"
+      },
+      {
+        "case_id": "P18",
+        "expected_intent": "stop",
+        "intent": "unknown",
+        "intent_correct": false,
+        "transcript": "Stop talking"
+      },
+      {
+        "case_id": "P19",
+        "expected_intent": "stop",
+        "intent": "stop",
+        "intent_correct": true,
+        "transcript": "Cancel"
+      },
+      {
+        "case_id": "P20",
+        "expected_intent": "stop",
+        "intent": "unknown",
+        "intent_correct": false,
+        "transcript": "Please be quiet"
+      }
+    ],
+    "fell_to_unknown": 11,
+    "intent_correct": 9,
+    "n": 20
+  },
+  "repeated_runs": {
+    "per_run": [
+      {
+        "dominant_stage_cases": 20,
+        "max_total_median_us": 4875.65,
+        "mean_total_median_us": 1746.2975,
+        "median_total_median_us": 1316.3674999999998,
+        "wav_share_of_mean_total": 0.8778091648187094,
+        "within_budget": 20
+      },
+      {
+        "dominant_stage_cases": 20,
+        "max_total_median_us": 4537.03,
+        "mean_total_median_us": 1729.79375,
+        "median_total_median_us": 1315.6235000000001,
+        "wav_share_of_mean_total": 0.8764939172661481,
+        "within_budget": 20
+      },
+      {
+        "dominant_stage_cases": 20,
+        "max_total_median_us": 4538.061,
+        "mean_total_median_us": 1726.3732499999999,
+        "median_total_median_us": 1312.0394999999999,
+        "wav_share_of_mean_total": 0.8763191853210192,
+        "within_budget": 20
+      },
+      {
+        "dominant_stage_cases": 20,
+        "max_total_median_us": 4547.239,
+        "mean_total_median_us": 1730.45695,
+        "median_total_median_us": 1313.875,
+        "wav_share_of_mean_total": 0.8762372851864358,
+        "within_budget": 20
+      },
+      {
+        "dominant_stage_cases": 20,
+        "max_total_median_us": 4536.999,
+        "mean_total_median_us": 1728.33945,
+        "median_total_median_us": 1312.915,
+        "wav_share_of_mean_total": 0.8763284029650541,
+        "within_budget": 20
+      }
+    ],
+    "runs": 5,
+    "spread": {
+      "dominant_stage_cases": {
+        "max": 20,
+        "mean": 20,
+        "min": 20,
+        "stdev": 0.0,
+        "values": [
+          20,
+          20,
+          20,
+          20,
+          20
+        ]
+      },
+      "max_total_median_us": {
+        "max": 4875.65,
+        "mean": 4606.996,
+        "min": 4536.999,
+        "stdev": 150.244,
+        "values": [
+          4875.65,
+          4537.03,
+          4538.061,
+          4547.239,
+          4536.999
+        ]
+      },
+      "mean_total_median_us": {
+        "max": 1746.297,
+        "mean": 1732.252,
+        "min": 1726.373,
+        "stdev": 8.006,
+        "values": [
+          1746.297,
+          1729.794,
+          1726.373,
+          1730.457,
+          1728.339
+        ]
+      },
+      "median_total_median_us": {
+        "max": 1316.367,
+        "mean": 1314.164,
+        "min": 1312.039,
+        "stdev": 1.813,
+        "values": [
+          1316.367,
+          1315.624,
+          1312.039,
+          1313.875,
+          1312.915
+        ]
+      },
+      "wav_share_of_mean_total": {
+        "max": 0.878,
+        "mean": 0.877,
+        "min": 0.876,
+        "stdev": 0.001,
+        "values": [
+          0.878,
+          0.876,
+          0.876,
+          0.876,
+          0.876
+        ]
+      },
+      "within_budget": {
+        "max": 20,
+        "mean": 20,
+        "min": 20,
+        "stdev": 0.0,
+        "values": [
+          20,
+          20,
+          20,
+          20,
+          20
+        ]
+      }
+    }
+  },
+  "time_to_first_word": {
+    "cases": [
+      {
+        "case_id": "B01",
+        "first_word_median_us": 122.113,
+        "full_median_us": 612.741,
+        "full_over_first": 5.018,
+        "words": 5
+      },
+      {
+        "case_id": "B02",
+        "first_word_median_us": 122.593,
+        "full_median_us": 489.348,
+        "full_over_first": 3.992,
+        "words": 4
+      },
+      {
+        "case_id": "B03",
+        "first_word_median_us": 122.361,
+        "full_median_us": 488.524,
+        "full_over_first": 3.992,
+        "words": 4
+      },
+      {
+        "case_id": "B04",
+        "first_word_median_us": 122.273,
+        "full_median_us": 1100.313,
+        "full_over_first": 8.999,
+        "words": 9
+      },
+      {
+        "case_id": "B05",
+        "first_word_median_us": 122.241,
+        "full_median_us": 1101.394,
+        "full_over_first": 9.01,
+        "words": 9
+      },
+      {
+        "case_id": "B06",
+        "first_word_median_us": 122.281,
+        "full_median_us": 1100.61,
+        "full_over_first": 9.001,
+        "words": 9
+      },
+      {
+        "case_id": "B07",
+        "first_word_median_us": 122.201,
+        "full_median_us": 612.374,
+        "full_over_first": 5.011,
+        "words": 5
+      },
+      {
+        "case_id": "B08",
+        "first_word_median_us": 122.465,
+        "full_median_us": 612.726,
+        "full_over_first": 5.003,
+        "words": 5
+      },
+      {
+        "case_id": "B09",
+        "first_word_median_us": 122.313,
+        "full_median_us": 612.325,
+        "full_over_first": 5.006,
+        "words": 5
+      },
+      {
+        "case_id": "B10",
+        "first_word_median_us": 122.625,
+        "full_median_us": 1100.505,
+        "full_over_first": 8.975,
+        "words": 9
+      },
+      {
+        "case_id": "B11",
+        "first_word_median_us": 122.233,
+        "full_median_us": 1593.541,
+        "full_over_first": 13.037,
+        "words": 13
+      },
+      {
+        "case_id": "B12",
+        "first_word_median_us": 121.929,
+        "full_median_us": 122.377,
+        "full_over_first": 1.004,
+        "words": 1
+      },
+      {
+        "case_id": "B13",
+        "first_word_median_us": 120.369,
+        "full_median_us": 2073.825,
+        "full_over_first": 17.229,
+        "words": 17
+      },
+      {
+        "case_id": "B14",
+        "first_word_median_us": 122.457,
+        "full_median_us": 612.349,
+        "full_over_first": 5.001,
+        "words": 5
+      },
+      {
+        "case_id": "B15",
+        "first_word_median_us": 122.425,
+        "full_median_us": 612.789,
+        "full_over_first": 5.005,
+        "words": 5
+      },
+      {
+        "case_id": "B16",
+        "first_word_median_us": 122.737,
+        "full_median_us": 1102.929,
+        "full_over_first": 8.986,
+        "words": 9
+      },
+      {
+        "case_id": "B17",
+        "first_word_median_us": 120.778,
+        "full_median_us": 857.328,
+        "full_over_first": 7.098,
+        "words": 7
+      },
+      {
+        "case_id": "B18",
+        "first_word_median_us": 120.561,
+        "full_median_us": 120.697,
+        "full_over_first": 1.001,
+        "words": 1
+      },
+      {
+        "case_id": "B19",
+        "first_word_median_us": 122.025,
+        "full_median_us": 606.357,
+        "full_over_first": 4.969,
+        "words": 5
+      },
+      {
+        "case_id": "B20",
+        "first_word_median_us": 122.225,
+        "full_median_us": 487.988,
+        "full_over_first": 3.993,
+        "words": 4
+      }
+    ],
+    "median_full_over_first": 5.008,
+    "samples_per_case": 30
+  }
+}

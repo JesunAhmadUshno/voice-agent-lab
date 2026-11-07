@@ -1,0 +1,25 @@
+{
+  "note": "Held-out paraphrase probe. 20 rewordings of the existing intents, written after the rule was frozen and never used to tune it. Expected intents are what a person asking would mean.",
+  "cases": [
+    {"case_id": "P01", "transcript": "Good morning", "expected_intent": "greeting"},
+    {"case_id": "P02", "transcript": "Hey, how are you", "expected_intent": "greeting"},
+    {"case_id": "P03", "transcript": "What hour is it", "expected_intent": "time"},
+    {"case_id": "P04", "transcript": "Do you have the time", "expected_intent": "time"},
+    {"case_id": "P05", "transcript": "What is today's date", "expected_intent": "date"},
+    {"case_id": "P06", "transcript": "What day is it today", "expected_intent": "date"},
+    {"case_id": "P07", "transcript": "Is it going to rain in Dhaka", "expected_intent": "weather"},
+    {"case_id": "P08", "transcript": "How is the weather looking in Dhaka", "expected_intent": "weather"},
+    {"case_id": "P09", "transcript": "What is it like outside", "expected_intent": "weather"},
+    {"case_id": "P10", "transcript": "Remind me in 10 minutes", "expected_intent": "timer"},
+    {"case_id": "P11", "transcript": "Start a 2 minute timer", "expected_intent": "timer"},
+    {"case_id": "P12", "transcript": "Who are you", "expected_intent": "name"},
+    {"case_id": "P13", "transcript": "Tell me your name please", "expected_intent": "name"},
+    {"case_id": "P14", "transcript": "What are my options", "expected_intent": "help"},
+    {"case_id": "P15", "transcript": "I need some help", "expected_intent": "help"},
+    {"case_id": "P16", "transcript": "See you later", "expected_intent": "goodbye"},
+    {"case_id": "P17", "transcript": "Okay bye for now", "expected_intent": "goodbye"},
+    {"case_id": "P18", "transcript": "Stop talking", "expected_intent": "stop"},
+    {"case_id": "P19", "transcript": "Cancel", "expected_intent": "stop"},
+    {"case_id": "P20", "transcript": "Please be quiet", "expected_intent": "stop"}
+  ]
+}
