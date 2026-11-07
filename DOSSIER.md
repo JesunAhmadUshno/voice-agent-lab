@@ -6,6 +6,8 @@ Written under the documentation and publishing standard (past, present, future).
 
 Prior art for this project is named in NOVELTY.md (voice agent platforms and the SonicClear seed product). The history of the problem, the key papers and systems, and what was tried before are recorded in the Roadmap v2 section text in SPEC.md and will be expanded with dated sources at the project's wave, before Build opens.
 
+A short, verifiable reference list (turn-taking timing, telephony delay guidance, ASR and VAD baselines, edit distance) is in docs/research-review.md, Related work, added 2026-11-07.
+
 ## Present
 
 Current demand evidence: hiring value 3 of 5 (xAI Multimodal and Mistral audio only) [confirmed, fleet and scoring pass 2026-11-04; for P23 to P29, the decision pack 2026-11-04]. The Round 3 research (2026-11-04) found the market centre at post-training, evals, environments, and inference depth [confirmed as the research finding; the report is at ~/workspace/research_notes/roadmap-v3-revaluation-research-20261104-0949/report.md]. Tools and versions are pinned at Build time, not in this v1.
