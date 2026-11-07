@@ -2,6 +2,8 @@
 
 Real-time voice agents: speech in, LLM answer, speech out, a latency budget study.
 
+Live dashboard: https://jesunahmadushno.github.io/voice-agent-lab/ (talk to the rule agent in your browser, interrupt it, add ASR noise, and replay the recorded latency runs; built from site/ by .github/workflows/pages.yml).
+
 Status: Learn DONE, Build DONE, and Deep DONE (2026-11-05, ROADMAP-V3-BATCH). v1.0 shipped.
 Project: P18. Fleet node: BlackBox (GPU). Wave: Wave 7. Learn ran on the Muse VM (CPU) with BlackBox unreachable. Build and Deep also ran on the Muse VM (CPU): neither scope has a GPU step. See the level READMEs for the named deductions.
 
@@ -66,6 +68,10 @@ Measured 2026-11-05 with level-3-deep/run_deep.py on the Muse VM (CPU, Python 3.
 | Barge-in drop path median | at most 75.864 microseconds, 165 frames dropped in total |
 | Modelled cloud total (modelled only) | mean 1212.75 ms, 29.865 to 1010.23 times the local totals |
 | Unit tests | 70 passed (30 Learn, 23 Build, 17 Deep), plus the scaffold smoke test |
+
+### Add-on probes (Deep)
+
+level-3-deep/run_probes.py writes level-3-deep/results_probes.json without touching results_deep.json: the Deep stage timings re-measured 5 times (between-run spread), sine-loop time to first word against the whole reply, and the keyword rule on 20 held-out paraphrases (cases_paraphrase.json). The probes ran on a different machine from the Deep study (recorded in the file), so only shapes and the paraphrase score carry over. The paraphrase result is a negative one: the rule understood 9 of 20 rewordings. See docs/research-review.md for how this fits the study's gaps.
 
 ## Novelty
 
