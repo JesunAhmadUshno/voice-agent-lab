@@ -16,6 +16,8 @@ class ProbeTests(unittest.TestCase):
     def test_spread_hand_check(self):
         s = spread([1.0, 2.0, 3.0])
         self.assertEqual((s["min"], s["max"], s["mean"], s["stdev"]), (1.0, 3.0, 2.0, 1.0))
+        # t(2) = 4.303, half width 4.303 * 1 / sqrt(3) = 2.484
+        self.assertEqual(s["ci95_mean"], [-0.484, 4.484])
 
     def test_paraphrase_rule_known_hits_and_misses(self):
         got = paraphrase_probe([

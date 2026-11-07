@@ -83,6 +83,7 @@ const sh = D.deepShares(deep);
 eq(Number(sh.wavMean.toFixed(3)), 9832.704, 'mean WAV median (Deep README)');
 eq(Math.round(sh.wavShare * 100), 89, 'WAV share of mean total (Deep README)');
 eq(Math.round(D.crossingWords(deep).crossing), 74, 'words to cross 100 ms (Deep README)');
+eq(D.tailBreaches(deep, 'median_us'), deep.summary.cases - deep.summary.within_budget, 'median breaches match within_budget');
 eq(D.designShares(deep), { wav_synthesis: 70000, frame_vad: 10000, streaming: 10000, intent_answer: 5000 }, 'design shares');
 for (const r of deep.cases) eq(Number(D.STAGES.reduce((a, s) => a + r.stage_us[s].median_us, 0).toFixed(3)), r.total_median_us, `total ${r.case_id}`);
 

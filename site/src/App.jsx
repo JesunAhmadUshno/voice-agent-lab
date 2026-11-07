@@ -678,11 +678,11 @@ function Probes() {
           <h3>Repeated runs: {rr.runs} full re-measurements</h3>
           <div className="scroll-x">
             <table>
-              <thead><tr><th>Run</th><th>Median turn ms</th><th>Mean turn ms</th><th>WAV share</th><th>Synthesis largest</th></tr></thead>
-              <tbody>{rr.per_run.map((r, i) => <tr key={i}><td>{i + 1}</td><td>{ms(r.median_total_median_us, 3)}</td><td>{ms(r.mean_total_median_us, 3)}</td><td>{pct(r.wav_share_of_mean_total, 1)}</td><td>{r.dominant_stage_cases}/{N}</td></tr>)}</tbody>
+              <thead><tr><th>Run</th><th>Median turn ms</th><th>Mean turn ms</th><th>WAV share</th><th>Synthesis largest</th><th>p99 sums over budget</th></tr></thead>
+              <tbody>{rr.per_run.map((r, i) => <tr key={i}><td>{i + 1}</td><td>{ms(r.median_total_median_us, 3)}</td><td>{ms(r.mean_total_median_us, 3)}</td><td>{pct(r.wav_share_of_mean_total, 1)}</td><td>{r.dominant_stage_cases}/{N}</td><td>{r.p99_sum_over_budget}/{N}</td></tr>)}</tbody>
             </table>
           </div>
-          <p className="hint">Median turn spread {ms(sp.min, 3)} to {ms(sp.max, 3)} ms (sd {sp.stdev} µs). The stage ordering held in every run; one machine only, so this is between-run, not between-machine, variance.</p>
+          <p className="hint">Median turn spread {ms(sp.min, 3)} to {ms(sp.max, 3)} ms (sd {sp.stdev} µs; 95% t interval for the mean {ms(sp.ci95_mean[0], 3)} to {ms(sp.ci95_mean[1], 3)} ms). Recorded Deep run for comparison: {D.tailBreaches(deep, 'p99_us')}/{N} p99 sums over budget on the shared VM. The stage ordering held in every run; one machine only, so this is between-run, not between-machine, variance.</p>
         </div>
         <div>
           <h3>Time to first word: median whole reply is {tt.median_full_over_first}× the first word</h3>

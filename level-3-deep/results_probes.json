@@ -156,48 +156,57 @@
     "per_run": [
       {
         "dominant_stage_cases": 20,
-        "max_total_median_us": 4875.65,
-        "mean_total_median_us": 1746.2975,
-        "median_total_median_us": 1316.3674999999998,
-        "wav_share_of_mean_total": 0.8778091648187094,
+        "max_total_median_us": 4983.429,
+        "mean_total_median_us": 1751.27825,
+        "median_total_median_us": 1313.438,
+        "p99_sum_over_budget": 0,
+        "wav_share_of_mean_total": 0.8779588566237261,
         "within_budget": 20
       },
       {
         "dominant_stage_cases": 20,
-        "max_total_median_us": 4537.03,
-        "mean_total_median_us": 1729.79375,
-        "median_total_median_us": 1315.6235000000001,
-        "wav_share_of_mean_total": 0.8764939172661481,
+        "max_total_median_us": 4555.026,
+        "mean_total_median_us": 1731.4237,
+        "median_total_median_us": 1315.8220000000001,
+        "p99_sum_over_budget": 0,
+        "wav_share_of_mean_total": 0.8759014619009777,
         "within_budget": 20
       },
       {
         "dominant_stage_cases": 20,
-        "max_total_median_us": 4538.061,
-        "mean_total_median_us": 1726.3732499999999,
-        "median_total_median_us": 1312.0394999999999,
-        "wav_share_of_mean_total": 0.8763191853210192,
+        "max_total_median_us": 4547.202,
+        "mean_total_median_us": 1731.9978,
+        "median_total_median_us": 1315.4135,
+        "p99_sum_over_budget": 0,
+        "wav_share_of_mean_total": 0.8757998999767782,
         "within_budget": 20
       },
       {
         "dominant_stage_cases": 20,
-        "max_total_median_us": 4547.239,
-        "mean_total_median_us": 1730.45695,
-        "median_total_median_us": 1313.875,
-        "wav_share_of_mean_total": 0.8762372851864358,
+        "max_total_median_us": 4548.722,
+        "mean_total_median_us": 1732.1077,
+        "median_total_median_us": 1316.3175,
+        "p99_sum_over_budget": 0,
+        "wav_share_of_mean_total": 0.8757462945289141,
         "within_budget": 20
       },
       {
         "dominant_stage_cases": 20,
-        "max_total_median_us": 4536.999,
-        "mean_total_median_us": 1728.33945,
-        "median_total_median_us": 1312.915,
-        "wav_share_of_mean_total": 0.8763284029650541,
+        "max_total_median_us": 4554.77,
+        "mean_total_median_us": 1733.8256,
+        "median_total_median_us": 1317.71,
+        "p99_sum_over_budget": 0,
+        "wav_share_of_mean_total": 0.8758450965310468,
         "within_budget": 20
       }
     ],
     "runs": 5,
     "spread": {
       "dominant_stage_cases": {
+        "ci95_mean": [
+          20.0,
+          20.0
+        ],
         "max": 20,
         "mean": 20,
         "min": 20,
@@ -211,47 +220,80 @@
         ]
       },
       "max_total_median_us": {
-        "max": 4875.65,
-        "mean": 4606.996,
-        "min": 4536.999,
-        "stdev": 150.244,
+        "ci95_mean": [
+          4397.944,
+          4877.715
+        ],
+        "max": 4983.429,
+        "mean": 4637.83,
+        "min": 4547.202,
+        "stdev": 193.228,
         "values": [
-          4875.65,
-          4537.03,
-          4538.061,
-          4547.239,
-          4536.999
+          4983.429,
+          4555.026,
+          4547.202,
+          4548.722,
+          4554.77
         ]
       },
       "mean_total_median_us": {
-        "max": 1746.297,
-        "mean": 1732.252,
-        "min": 1726.373,
-        "stdev": 8.006,
+        "ci95_mean": [
+          1725.553,
+          1746.701
+        ],
+        "max": 1751.278,
+        "mean": 1736.127,
+        "min": 1731.424,
+        "stdev": 8.517,
         "values": [
-          1746.297,
-          1729.794,
-          1726.373,
-          1730.457,
-          1728.339
+          1751.278,
+          1731.424,
+          1731.998,
+          1732.108,
+          1733.826
         ]
       },
       "median_total_median_us": {
-        "max": 1316.367,
-        "mean": 1314.164,
-        "min": 1312.039,
-        "stdev": 1.813,
+        "ci95_mean": [
+          1313.814,
+          1317.666
+        ],
+        "max": 1317.71,
+        "mean": 1315.74,
+        "min": 1313.438,
+        "stdev": 1.551,
         "values": [
-          1316.367,
-          1315.624,
-          1312.039,
-          1313.875,
-          1312.915
+          1313.438,
+          1315.822,
+          1315.414,
+          1316.318,
+          1317.71
+        ]
+      },
+      "p99_sum_over_budget": {
+        "ci95_mean": [
+          0.0,
+          0.0
+        ],
+        "max": 0,
+        "mean": 0,
+        "min": 0,
+        "stdev": 0.0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
         ]
       },
       "wav_share_of_mean_total": {
+        "ci95_mean": [
+          0.875,
+          0.877
+        ],
         "max": 0.878,
-        "mean": 0.877,
+        "mean": 0.876,
         "min": 0.876,
         "stdev": 0.001,
         "values": [
@@ -263,6 +305,10 @@
         ]
       },
       "within_budget": {
+        "ci95_mean": [
+          20.0,
+          20.0
+        ],
         "max": 20,
         "mean": 20,
         "min": 20,
@@ -281,146 +327,146 @@
     "cases": [
       {
         "case_id": "B01",
-        "first_word_median_us": 122.113,
-        "full_median_us": 612.741,
-        "full_over_first": 5.018,
-        "words": 5
-      },
-      {
-        "case_id": "B02",
-        "first_word_median_us": 122.593,
-        "full_median_us": 489.348,
-        "full_over_first": 3.992,
-        "words": 4
-      },
-      {
-        "case_id": "B03",
-        "first_word_median_us": 122.361,
-        "full_median_us": 488.524,
-        "full_over_first": 3.992,
-        "words": 4
-      },
-      {
-        "case_id": "B04",
-        "first_word_median_us": 122.273,
-        "full_median_us": 1100.313,
-        "full_over_first": 8.999,
-        "words": 9
-      },
-      {
-        "case_id": "B05",
-        "first_word_median_us": 122.241,
-        "full_median_us": 1101.394,
-        "full_over_first": 9.01,
-        "words": 9
-      },
-      {
-        "case_id": "B06",
-        "first_word_median_us": 122.281,
-        "full_median_us": 1100.61,
-        "full_over_first": 9.001,
-        "words": 9
-      },
-      {
-        "case_id": "B07",
-        "first_word_median_us": 122.201,
-        "full_median_us": 612.374,
+        "first_word_median_us": 122.321,
+        "full_median_us": 612.933,
         "full_over_first": 5.011,
         "words": 5
       },
       {
+        "case_id": "B02",
+        "first_word_median_us": 122.681,
+        "full_median_us": 489.539,
+        "full_over_first": 3.99,
+        "words": 4
+      },
+      {
+        "case_id": "B03",
+        "first_word_median_us": 122.385,
+        "full_median_us": 489.315,
+        "full_over_first": 3.998,
+        "words": 4
+      },
+      {
+        "case_id": "B04",
+        "first_word_median_us": 122.601,
+        "full_median_us": 1098.944,
+        "full_over_first": 8.964,
+        "words": 9
+      },
+      {
+        "case_id": "B05",
+        "first_word_median_us": 122.425,
+        "full_median_us": 1102.288,
+        "full_over_first": 9.004,
+        "words": 9
+      },
+      {
+        "case_id": "B06",
+        "first_word_median_us": 122.841,
+        "full_median_us": 1103.584,
+        "full_over_first": 8.984,
+        "words": 9
+      },
+      {
+        "case_id": "B07",
+        "first_word_median_us": 122.617,
+        "full_median_us": 613.957,
+        "full_over_first": 5.007,
+        "words": 5
+      },
+      {
         "case_id": "B08",
-        "first_word_median_us": 122.465,
-        "full_median_us": 612.726,
-        "full_over_first": 5.003,
+        "first_word_median_us": 122.505,
+        "full_median_us": 612.972,
+        "full_over_first": 5.004,
         "words": 5
       },
       {
         "case_id": "B09",
-        "first_word_median_us": 122.313,
-        "full_median_us": 612.325,
-        "full_over_first": 5.006,
+        "first_word_median_us": 122.337,
+        "full_median_us": 612.885,
+        "full_over_first": 5.01,
         "words": 5
       },
       {
         "case_id": "B10",
-        "first_word_median_us": 122.625,
-        "full_median_us": 1100.505,
-        "full_over_first": 8.975,
+        "first_word_median_us": 122.345,
+        "full_median_us": 1101.168,
+        "full_over_first": 9.001,
         "words": 9
       },
       {
         "case_id": "B11",
-        "first_word_median_us": 122.233,
-        "full_median_us": 1593.541,
-        "full_over_first": 13.037,
+        "first_word_median_us": 122.297,
+        "full_median_us": 1592.388,
+        "full_over_first": 13.021,
         "words": 13
       },
       {
         "case_id": "B12",
-        "first_word_median_us": 121.929,
-        "full_median_us": 122.377,
-        "full_over_first": 1.004,
-        "words": 1
-      },
-      {
-        "case_id": "B13",
-        "first_word_median_us": 120.369,
-        "full_median_us": 2073.825,
-        "full_over_first": 17.229,
-        "words": 17
-      },
-      {
-        "case_id": "B14",
-        "first_word_median_us": 122.457,
-        "full_median_us": 612.349,
-        "full_over_first": 5.001,
-        "words": 5
-      },
-      {
-        "case_id": "B15",
-        "first_word_median_us": 122.425,
-        "full_median_us": 612.789,
-        "full_over_first": 5.005,
-        "words": 5
-      },
-      {
-        "case_id": "B16",
-        "first_word_median_us": 122.737,
-        "full_median_us": 1102.929,
-        "full_over_first": 8.986,
-        "words": 9
-      },
-      {
-        "case_id": "B17",
-        "first_word_median_us": 120.778,
-        "full_median_us": 857.328,
-        "full_over_first": 7.098,
-        "words": 7
-      },
-      {
-        "case_id": "B18",
-        "first_word_median_us": 120.561,
-        "full_median_us": 120.697,
+        "first_word_median_us": 122.321,
+        "full_median_us": 122.385,
         "full_over_first": 1.001,
         "words": 1
       },
       {
+        "case_id": "B13",
+        "first_word_median_us": 122.337,
+        "full_median_us": 2084.248,
+        "full_over_first": 17.037,
+        "words": 17
+      },
+      {
+        "case_id": "B14",
+        "first_word_median_us": 122.545,
+        "full_median_us": 613.765,
+        "full_over_first": 5.008,
+        "words": 5
+      },
+      {
+        "case_id": "B15",
+        "first_word_median_us": 122.217,
+        "full_median_us": 613.341,
+        "full_over_first": 5.018,
+        "words": 5
+      },
+      {
+        "case_id": "B16",
+        "first_word_median_us": 122.601,
+        "full_median_us": 1102.2,
+        "full_over_first": 8.99,
+        "words": 9
+      },
+      {
+        "case_id": "B17",
+        "first_word_median_us": 121.889,
+        "full_median_us": 856.583,
+        "full_over_first": 7.028,
+        "words": 7
+      },
+      {
+        "case_id": "B18",
+        "first_word_median_us": 122.289,
+        "full_median_us": 122.112,
+        "full_over_first": 0.999,
+        "words": 1
+      },
+      {
         "case_id": "B19",
-        "first_word_median_us": 122.025,
-        "full_median_us": 606.357,
-        "full_over_first": 4.969,
+        "first_word_median_us": 122.169,
+        "full_median_us": 612.668,
+        "full_over_first": 5.015,
         "words": 5
       },
       {
         "case_id": "B20",
-        "first_word_median_us": 122.225,
-        "full_median_us": 487.988,
-        "full_over_first": 3.993,
+        "first_word_median_us": 122.393,
+        "full_median_us": 488.779,
+        "full_over_first": 3.994,
         "words": 4
       }
     ],
-    "median_full_over_first": 5.008,
+    "median_full_over_first": 5.013,
     "samples_per_case": 30
   }
 }

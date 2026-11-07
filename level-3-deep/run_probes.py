@@ -39,10 +39,18 @@ RUNS = 5
 TTFW_SAMPLES = 30
 
 
+# Two-sided 95% Student t quantiles by degrees of freedom (standard table values).
+T95 = {2: 4.303, 3: 3.182, 4: 2.776, 5: 2.571, 9: 2.262}
+
+
 def spread(values):
+    """Run-level spread, with a 95% t interval for the mean when the table has the df."""
+    m, sd = statistics.mean(values), statistics.stdev(values)
+    t = T95.get(len(values) - 1)
+    half = t * sd / len(values) ** 0.5 if t else None
     return {"min": round(min(values), 3), "max": round(max(values), 3),
-            "mean": round(statistics.mean(values), 3),
-            "stdev": round(statistics.stdev(values), 3),
+            "mean": round(m, 3), "stdev": round(sd, 3),
+            "ci95_mean": [round(m - half, 3), round(m + half, 3)] if t else None,
             "values": [round(v, 3) for v in values]}
 
 
@@ -61,6 +69,9 @@ def repeated_runs(cases, runs=RUNS):
                 1 for r in rows
                 if max(r["stage_us"], key=lambda k: r["stage_us"][k]["median_us"]) == "wav_synthesis"),
             "within_budget": sum(1 for r in rows if r["within_budget"]),
+            "p99_sum_over_budget": sum(
+                1 for r in rows
+                if sum(v["p99_us"] for v in r["stage_us"].values()) > 100000.0),
         })
     return {"runs": runs, "per_run": per_run,
             "spread": {k: spread([r[k] for r in per_run]) for k in per_run[0]}}
