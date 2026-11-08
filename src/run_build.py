@@ -1,6 +1,6 @@
-"""Run the Build evaluation and write results_build.json.
+"""Run the Build evaluation and write results/build.json.
 
-Run: python level-2-build/run_build.py
+Run: python src/run_build.py
 
 The results file is fully deterministic: it holds no wall-clock
 field. Every value is a count, a sample count, a duration derived
@@ -13,11 +13,10 @@ import statistics
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
-from voice_pipeline import AudioSession, DialogueSession, run_core_turn, simulate_asr, word_error_rate  # noqa: E402
-
-sys.path.insert(0, os.path.join(HERE, "..", "level-1-learn"))
 from voice_agent import normalize, run_turn  # noqa: E402
+from voice_pipeline import AudioSession, DialogueSession, run_core_turn, simulate_asr, word_error_rate  # noqa: E402
 
 
 def run_single(cases):
@@ -104,7 +103,7 @@ def run_barge_in(scenarios):
 
 
 def main():
-    with open(os.path.join(HERE, "cases_build.json"),
+    with open(os.path.join(ROOT, "experiments", "cases", "cases_build.json"),
               encoding="utf-8") as f:
         cases = json.load(f)
     single = run_single(cases["single"])
@@ -178,7 +177,7 @@ def main():
         "noise": noise,
         "barge_in": barge,
     }
-    path = os.path.join(HERE, "results_build.json")
+    path = os.path.join(ROOT, "results", "build.json")
     with open(path, "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2, sort_keys=True)
         f.write("\n")

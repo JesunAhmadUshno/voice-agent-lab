@@ -12,7 +12,7 @@ import sys
 import unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(HERE, "..", "level-3-deep"))
+sys.path.insert(0, os.path.join(HERE, "..", "src"))
 from latency_lab import (  # noqa: E402
     assess_turn_budget,
     barge_drop,

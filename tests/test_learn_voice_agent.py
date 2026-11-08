@@ -7,7 +7,7 @@ import sys
 import unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(HERE, "..", "level-1-learn"))
+sys.path.insert(0, os.path.join(HERE, "..", "src"))
 from voice_agent import (  # noqa: E402
     MS_PER_WORD,
     VoiceSession,

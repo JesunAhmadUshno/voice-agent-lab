@@ -1,7 +1,7 @@
 """Run all Learn cases and the barge-in scenarios, write results.
 
-Run: python level-1-learn/run_learn.py
-Writes level-1-learn/results_learn.json.
+Run: python src/run_learn.py [output.json]
+Writes a new dated file in experiments/runs/ (never overwrites one).
 
 Correctness fields (intents, responses, frame counts, drops) are
 deterministic. Latency fields are measured wall-clock: each stage
@@ -11,11 +11,13 @@ No latency number in the output is invented or simulated.
 """
 import json
 import os
+import platform
 import statistics
 import sys
 import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 from voice_agent import VoiceSession, assess_budget, run_turn, stage_answer, stage_frame, stage_intent, stage_tts  # noqa: E402
 
@@ -116,8 +118,18 @@ def run_barge_in():
     return out
 
 
+
+def evidence_path(study):
+    """Where a timed run is written: the path given on the command line, or a new dated file in
+    experiments/runs/. Open mode "x" refuses to overwrite, so recorded evidence is never replaced."""
+    if len(sys.argv) > 1:
+        return sys.argv[1]
+    host = platform.machine() or "unknown"
+    return os.path.join(ROOT, "experiments", "runs", f"{time.strftime('%Y-%m-%d')}-learn-{host}.json")
+
+
 def main():
-    with open(os.path.join(HERE, "cases_learn.json"), encoding="utf-8") as f:
+    with open(os.path.join(ROOT, "experiments", "cases", "cases_learn.json"), encoding="utf-8") as f:
         cases = json.load(f)
     results = [measure_case(c) for c in cases]
     for r in results:
@@ -159,8 +171,8 @@ def main():
         "cases": results,
         "barge_in": barge,
     }
-    path = os.path.join(HERE, "results_learn.json")
-    with open(path, "w", encoding="utf-8") as f:
+    path = evidence_path("learn")
+    with open(path, "x", encoding="utf-8") as f:
         json.dump(out, f, indent=2, sort_keys=True)
         f.write("\n")
     print(f"Summary: intent {summary['intent_correct']} of {summary['cases']}, "

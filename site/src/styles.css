@@ -284,13 +284,10 @@ svg.chart.strip { height: 34px; margin-top: 12px; }
 .pcase { padding: 8px 12px; border-radius: 10px; background: var(--surface-strong); border: 1px solid var(--border); border-left: 4px solid var(--good); font-size: 13px; }
 .pcase.miss { border-left-color: var(--bad); }
 .pcase small { display: block; color: var(--muted); font-size: 11.5px; }
-.grades { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
-.grades .num small { font-family: Inter, sans-serif; font-size: 13px; color: var(--muted); }
 .ded, .limits { margin: 10px 0 0; padding-left: 18px; font-size: 12.5px; color: var(--muted); display: grid; gap: 6px; }
 .ded b { color: var(--bad); font-variant-numeric: tabular-nums; }
 .limits b { color: var(--text); }
 @media (max-width: 760px) {
-  .grades { grid-template-columns: 1fr; }
   .tiles.two { grid-template-columns: 1fr 1fr; }
   .reply { font-size: 22px; }
 }

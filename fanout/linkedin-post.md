@@ -42,8 +42,7 @@ rather than a speech model, and the budget verdict is a median
 verdict, because the p99 tails on a shared machine spike far
 above it.
 
-Grades, house scale: Learn 8,500, Build 7,500, Deep 7,700 of
-10,000. 70 tests in total, plus the smoke test.
+70 tests in total, plus the smoke test.
 
 Which stage would you measure first in a production voice
 agent: recognition, the model, or synthesis?
