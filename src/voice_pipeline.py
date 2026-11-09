@@ -1,6 +1,6 @@
 """Build-level end-to-end voice pipeline, stdlib only.
 
-Learn (level-1-learn/voice_agent.py, reused here by import) was a
+Learn (src/voice_agent.py, reused here by import) was a
 single-turn simulated loop: text in, text out, word-group frames.
 Build keeps that turn as its answer core and adds the system
 around it:
@@ -11,7 +11,7 @@ around it:
   separated by 40 ms of silence. This is real audio data with real
   duration and energy, but it is NOT intelligible speech and no
   TTS voice is claimed: no TTS engine exists on this machine (see
-  BUILD-SPEC.md for the checked substitutions).
+  PROPOSAL.md (Build design) for the checked substitutions).
 - Voice activity split: 20 ms frames of the WAV are classified
   speech or silence by a root-mean-square energy rule.
 - Streaming intent: a transcript is replayed as cumulative word
@@ -38,7 +38,7 @@ import sys
 import wave
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(HERE, "..", "level-1-learn"))
+sys.path.insert(0, HERE)
 from voice_agent import extract_timer_seconds, normalize, run_turn, stage_intent  # noqa: E402
 
 SAMPLE_RATE = 8000

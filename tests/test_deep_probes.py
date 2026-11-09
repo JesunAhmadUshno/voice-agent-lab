@@ -8,7 +8,7 @@ import sys
 import unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(HERE, "..", "level-3-deep"))
+sys.path.insert(0, os.path.join(HERE, "..", "src"))
 from run_probes import paraphrase_probe, spread  # noqa: E402
 
 
@@ -28,9 +28,10 @@ class ProbeTests(unittest.TestCase):
         self.assertEqual(got["fell_to_unknown"], 1)
 
     def test_committed_paraphrase_result_matches_rule(self):
-        with open(os.path.join(HERE, "..", "level-3-deep", "cases_paraphrase.json"), encoding="utf-8") as f:
+        with open(os.path.join(HERE, "..", "experiments", "cases", "cases_paraphrase.json"), encoding="utf-8") as f:
             cases = json.load(f)["cases"]
-        with open(os.path.join(HERE, "..", "level-3-deep", "results_probes.json"), encoding="utf-8") as f:
+        run = os.path.join(HERE, "..", "experiments", "runs", "2026-11-07-probes-aarch64.json")
+        with open(run, encoding="utf-8") as f:
             saved = json.load(f)["paraphrase"]
         self.assertEqual(paraphrase_probe(cases), saved)
 

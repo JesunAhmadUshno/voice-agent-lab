@@ -1,8 +1,8 @@
-"""Three cheap add-on probes for the Deep study. Writes results_probes.json.
+"""Three cheap add-on probes for the Deep study. Writes a new dated file in experiments/runs/.
 
-Run: python level-3-deep/run_probes.py   (about 10 s on CPU)
+Run: python src/run_probes.py [output.json]  (about 10 s on CPU)
 
-It never touches results_deep.json. The probes:
+It never touches the recorded Deep run. The probes:
 
 1. Repeated runs: the Deep per-case stage timings are re-measured
    RUNS times with the same code and sample counts (run_deep.measure_case),
@@ -23,16 +23,14 @@ import os
 import platform
 import statistics
 import sys
+import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 from latency_lab import summarize, time_callable  # noqa: E402
 from run_deep import measure_case  # noqa: E402
-
-sys.path.insert(0, os.path.join(HERE, "..", "level-1-learn"))
 from voice_agent import normalize, stage_intent  # noqa: E402
-
-sys.path.insert(0, os.path.join(HERE, "..", "level-2-build"))
 from voice_pipeline import run_core_turn, synthesize_samples  # noqa: E402
 
 RUNS = 5
@@ -100,10 +98,20 @@ def paraphrase_probe(cases):
             "fell_to_unknown": sum(1 for r in rows if r["intent"] == "unknown")}
 
 
+
+def evidence_path(study):
+    """Where a timed run is written: the path given on the command line, or a new dated file in
+    experiments/runs/. Open mode "x" refuses to overwrite, so recorded evidence is never replaced."""
+    if len(sys.argv) > 1:
+        return sys.argv[1]
+    host = platform.machine() or "unknown"
+    return os.path.join(ROOT, "experiments", "runs", f"{time.strftime('%Y-%m-%d')}-probes-{host}.json")
+
+
 def main():
-    with open(os.path.join(HERE, "cases_deep.json"), encoding="utf-8") as f:
+    with open(os.path.join(ROOT, "experiments", "cases", "cases_deep.json"), encoding="utf-8") as f:
         single = json.load(f)["single"]
-    with open(os.path.join(HERE, "cases_paraphrase.json"), encoding="utf-8") as f:
+    with open(os.path.join(ROOT, "experiments", "cases", "cases_paraphrase.json"), encoding="utf-8") as f:
         para = json.load(f)["cases"]
     out = {
         "label": ("add-on probes to the Deep study: repeated-run variance of the measured local stage "
@@ -115,8 +123,8 @@ def main():
         "time_to_first_word": time_to_first_word(single),
         "paraphrase": paraphrase_probe(para),
     }
-    path = os.path.join(HERE, "results_probes.json")
-    with open(path, "w", encoding="utf-8") as f:
+    path = evidence_path("probes")
+    with open(path, "x", encoding="utf-8") as f:
         json.dump(out, f, indent=2, sort_keys=True)
         f.write("\n")
     p = out["paraphrase"]

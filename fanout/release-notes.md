@@ -21,7 +21,6 @@ https://github.com/JesunAhmadUshno/voice-agent-lab/releases
   response 12 of 12, total stage latency mean 4.835 microseconds
   and max 6.095 microseconds against a 5000 microsecond budget,
   2 barge-in scenarios dropping 5 unplayed frames in total.
-- Level grade: 8,500 of 10,000.
 - Release: https://github.com/JesunAhmadUshno/voice-agent-lab/releases/tag/v0.1
 
 ## v0.5, Build (2026-11-05)
@@ -38,7 +37,6 @@ https://github.com/JesunAhmadUshno/voice-agent-lab/releases
   all 4 failures on weather cases), 323440 WAV bytes (20160.0
   ms, 1008 frames of 20 ms), 3 barge-in scenarios dropping 165
   unplayed frames in total.
-- Level grade: 7,500 of 10,000.
 - Release: https://github.com/JesunAhmadUshno/voice-agent-lab/releases/tag/v0.5
 
 ## v1.0, Learn, Build, and Deep (2026-11-05)
@@ -46,7 +44,7 @@ https://github.com/JesunAhmadUshno/voice-agent-lab/releases
 - What shipped: the latency budget study on top of Learn and
   Build, plus 17 new tests (70 unit tests in total, plus the
   scaffold smoke test). The rest of the v2 scope is named in
-  ROADMAP.md as the v1.1 backlog.
+  REPORT.md (v1.1 backlog) as the v1.1 backlog.
 - Measured and modelled result: WAV synthesis dominant in 20 of
   20 cases, total local latency median case 7255.203
   microseconds and max case median 41688.082 microseconds, 20
@@ -55,7 +53,6 @@ https://github.com/JesunAhmadUshno/voice-agent-lab/releases
   dropped in total; modelled cloud total mean 1212.75 ms per
   case (29.865 to 1010.23 times the local totals), from stated
   constants only. Cloud quality and latency not measured.
-- Level grade: 7,700 of 10,000.
 - Release: https://github.com/JesunAhmadUshno/voice-agent-lab/releases/tag/v1.0
 
 ## Held channels
@@ -63,7 +60,7 @@ https://github.com/JesunAhmadUshno/voice-agent-lab/releases
 - Social posts for every release above: HELD under the standing
   platform rules. The loop prepares drafts and never posts;
   Threads needs Jesun's one tap per post.
-- The v1.1 backlog lives in ROADMAP.md: streaming synthesis, a
+- The v1.1 backlog lives in REPORT.md (v1.1 backlog): streaming synthesis, a
   real local ASR and TTS swap-in, a measured cloud comparison,
   concurrency, a tail-latency budget, a device path, an LLM
   answer step, and larger real workloads.

@@ -1,6 +1,6 @@
-"""Run the Deep latency budget study and write results_deep.json.
+"""Run the Deep latency budget study and write a new dated file in experiments/runs/.
 
-Run: python level-3-deep/run_deep.py
+Run: python src/run_deep.py [output.json]
 
 Local stage latencies are measured wall-clock values (each call
 timed individually with time.perf_counter_ns, pooled over 3
@@ -9,15 +9,18 @@ is NOT byte-identical across runs. The deterministic fields
 (intents, responses, frame counts, drops, audio sizes, and all
 modelled cloud totals) are identical across runs, and the exit
 code gates on them plus the 500 ms hard ceiling from
-DEEP-SPEC.md. The cloud side is modelled only, from stated
+PROPOSAL.md (Deep design). The cloud side is modelled only, from stated
 constants, and is labelled modelled in the output.
 """
 import json
 import os
+import platform
 import statistics
 import sys
+import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 from latency_lab import (  # noqa: E402
     assess_turn_budget,
@@ -34,12 +37,8 @@ from latency_lab import (  # noqa: E402
     time_callable,
     time_setup_callable,
 )
-
-sys.path.insert(0, os.path.join(HERE, "..", "level-2-build"))
-from voice_pipeline import run_core_turn, synthesize_samples  # noqa: E402
-
-sys.path.insert(0, os.path.join(HERE, "..", "level-1-learn"))
 from voice_agent import normalize  # noqa: E402
+from voice_pipeline import run_core_turn, synthesize_samples  # noqa: E402
 
 SAMPLES = {"intent_answer": 300, "streaming": 300, "frame_vad": 100,
            "wav_synthesis": 30, "barge_drop": 60, "barge_full": 20}
@@ -126,8 +125,18 @@ def run_barge(scenarios):
     return rows
 
 
+
+def evidence_path(study):
+    """Where a timed run is written: the path given on the command line, or a new dated file in
+    experiments/runs/. Open mode "x" refuses to overwrite, so recorded evidence is never replaced."""
+    if len(sys.argv) > 1:
+        return sys.argv[1]
+    host = platform.machine() or "unknown"
+    return os.path.join(ROOT, "experiments", "runs", f"{time.strftime('%Y-%m-%d')}-deep-{host}.json")
+
+
 def main():
-    with open(os.path.join(HERE, "cases_deep.json"),
+    with open(os.path.join(ROOT, "experiments", "cases", "cases_deep.json"),
               encoding="utf-8") as f:
         cases = json.load(f)
     rows = [measure_case(c) for c in cases["single"]]
@@ -202,8 +211,8 @@ def main():
         "cases": rows,
         "barge_in": barge,
     }
-    path = os.path.join(HERE, "results_deep.json")
-    with open(path, "w", encoding="utf-8") as f:
+    path = evidence_path("deep")
+    with open(path, "x", encoding="utf-8") as f:
         json.dump(out, f, indent=2, sort_keys=True)
         f.write("\n")
     print(f"Summary: intent {summary['intent_correct']} of "

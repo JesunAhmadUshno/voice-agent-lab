@@ -1,12 +1,10 @@
 import { useMemo, useState, useEffect, useRef, useId, useCallback } from 'react';
-import build from '../../level-2-build/results_build.json';
-import buildCases from '../../level-2-build/cases_build.json';
-import deep from '../../level-3-deep/results_deep.json';
-import probes from '../../level-3-deep/results_probes.json';
-import learnMd from '../../level-1-learn/README.md?raw';
-import buildMd from '../../level-2-build/README.md?raw';
-import deepMd from '../../level-3-deep/README.md?raw';
-import roadmapMd from '../../ROADMAP.md?raw';
+import build from '../../results/build.json';
+import buildCases from '../../experiments/cases/cases_build.json';
+import deep from '../../experiments/runs/2026-11-05-deep-muse-vm.json';
+import probes from '../../experiments/runs/2026-11-07-probes-aarch64.json';
+import readmeMd from '../../README.md?raw';
+import reportMd from '../../REPORT.md?raw';
 import * as V from './voice.js';
 import * as D from './derive.js';
 
@@ -15,9 +13,9 @@ const blob = (p) => `${REPO}/blob/main/${p}`;
 const ms = (us, d = 2) => (us / 1000).toFixed(d);
 const pct = (x, d = 0) => `${(x * 100).toFixed(d)}%`;
 
-const LEVELS = [['Learn', 'level-1-learn', D.parseLevelReadme(learnMd)], ['Build', 'level-2-build', D.parseLevelReadme(buildMd)], ['Deep', 'level-3-deep', D.parseLevelReadme(deepMd)]];
-const DEEP_README = LEVELS[2][2];
-const REC = DEEP_README.recorded;
+const VERDICT = readmeMd.match(/^\*\*Verdict\.\*\* ([^.]+)/m)[1];
+const DEEP_STAGE = D.parseStage(D.stageSection(reportMd, 3));
+const REC = DEEP_STAGE.recorded;
 const RECORDED = `recorded ${REC.date}, ${REC.machine}, CPU`;
 const SHARES = D.deepShares(deep);
 const CLOUD0 = D.cloudDefaults(deep);
@@ -33,7 +31,7 @@ const STAGE_META = {
   intent_answer: ['Intent and answer', 'var(--bad)'],
 };
 
-const SECTIONS = [['top', 'Overview', '◎'], ['talk', 'Talk to it', '◉'], ['barge', 'Barge-in', '⏹'], ['noise', 'ASR noise', '≈'], ['budget', 'Budget', '▥'], ['cloud', 'Local vs cloud', '☁'], ['scaling', 'Scaling', '⟋'], ['probes', 'Probes', '±'], ['grades', 'Grades', '✓'], ['reproduce', 'Reproduce', '❯_']];
+const SECTIONS = [['top', 'Overview', '◎'], ['talk', 'Talk to it', '◉'], ['barge', 'Barge-in', '⏹'], ['noise', 'ASR noise', '≈'], ['budget', 'Budget', '▥'], ['cloud', 'Local vs cloud', '☁'], ['scaling', 'Scaling', '⟋'], ['probes', 'Probes', '±'], ['limits', 'Limits', '!'], ['reproduce', 'Reproduce', '❯_']];
 
 function useReveal() {
   useEffect(() => {
@@ -52,11 +50,10 @@ function MenuBar() {
     <div className="menubar" role="banner">
       <span className="apple" aria-hidden="true">◆</span>
       <a className="app" href="#top">Voice Agent Lab</a>
-      <a className="m" href={blob('SPEC.md')}>Spec</a>
-      <a className="m" href={blob('level-3-deep/README.md')}>Deep study</a>
-      <a className="m" href={blob('docs/research-review.md')}>Research review</a>
+      <a className="m" href={blob('PROPOSAL.md')}>Proposal</a>
+      <a className="m" href={blob('REPORT.md')}>Report</a>
       <span className="spacer" />
-      <span className="status"><i /> {S.intent_correct}/{S.cases} cases pass</span>
+      <span className="status"><i /> {VERDICT}</span>
       <a href={REPO}>GitHub ↗</a>
       <span className="clock">{now.toLocaleString('en-US', { weekday: 'short', hour: 'numeric', minute: '2-digit' })}</span>
     </div>
@@ -176,11 +173,11 @@ export default function App() {
       <Cloud />
       <Scaling />
       <Probes />
-      <Grades />
+      <Limits />
       <Reproduce />
       <Dock />
       <footer>
-        Code: Apache-2.0. Every number on this page is read from the committed <code>level-*/results_*.json</code> and README files at build time,
+        Code: Apache-2.0. Every number on this page is read from the committed <code>experiments/</code>, <code>results/</code> and REPORT.md files at build time,
         and a build-time check replays all {buildCases.single.length} Build turns, {buildCases.dialogues.length} dialogues and {buildCases.barge_in.length} barge-in scenarios through the in-browser port before the page is published.
       </footer>
     </div>
@@ -245,7 +242,7 @@ function Talk() {
           <p className="eyebrow">Live in your browser</p>
           <h2>Talk to it. The <em>same rules</em> answer here.</h2>
           <p className="sub">
-            A line-for-line JavaScript port of <a href={blob('level-1-learn/voice_agent.py')}>voice_agent.py</a> and the dialogue state in <a href={blob('level-2-build/voice_pipeline.py')}>voice_pipeline.py</a>.
+            A line-for-line JavaScript port of <a href={blob('src/voice_agent.py')}>voice_agent.py</a> and the dialogue state in <a href={blob('src/voice_pipeline.py')}>voice_pipeline.py</a>.
             Watch the intent settle word by word, then hear the reply as the repo&rsquo;s tone synthesis. Follow-ups keep context: try a city on its own, a timer with no amount, or &ldquo;say that again&rdquo;.
           </p>
         </div>
@@ -479,7 +476,7 @@ function Budget() {
           <p className="eyebrow">Recorded replay</p>
           <h2>Where every <em>microsecond</em> goes.</h2>
           <p className="sub">
-            Each bar is one test turn: the four measured stage timings stacked against the {ms(deep.budget_us, 0)} ms budget set in DEEP-SPEC.md before measuring.
+            Each bar is one test turn: the four measured stage timings stacked against the {ms(deep.budget_us, 0)} ms budget set in the Deep design (PROPOSAL.md) before measuring.
             At the median every turn fits. Switch to p90 or p99 and the tails of the synthesis loop on a shared VM break through.
           </p>
         </div>
@@ -539,7 +536,7 @@ function Cloud() {
           <p className="eyebrow">Live calculator over recorded local data</p>
           <h2>Local compute is not the problem. The <em>modelled</em> cloud steps are.</h2>
           <p className="sub">
-            The repo never called a cloud service. It writes down five constants and the formula from <a href={blob('level-3-deep/latency_lab.py')}>latency_lab.py</a>:
+            The repo never called a cloud service. It writes down five constants and the formula from <a href={blob('src/latency_lab.py')}>latency_lab.py</a>:
             network + ASR + LLM + TTS base + TTS per word × words. Move them and the modelled totals and ratios recompute against the recorded local medians.
           </p>
         </div>
@@ -554,7 +551,7 @@ function Cloud() {
       </div>
       <div className="actions" style={{ marginTop: 0, marginBottom: 12 }}>
         <button className="btn ghost" type="button" onClick={() => setC(CLOUD0)} disabled={isDefault}>Reset to the repo&rsquo;s constants</button>
-        <span className="hint">{isDefault ? `Defaults are read from results_deep.json; mean ${meanCloud} ms matches the recorded ${S.modelled_cloud_mean_ms} ms.` : 'Your what-if: still a model, not a measurement.'}</span>
+        <span className="hint">{isDefault ? `Defaults are read from the recorded Deep run; mean ${meanCloud} ms matches the recorded ${S.modelled_cloud_mean_ms} ms.` : 'Your what-if: still a model, not a measurement.'}</span>
       </div>
       <div className="tiles small">
         <div className="tile"><div className="num">{+meanCloud.toFixed(2)} ms</div><div className="cap">mean modelled cloud turn</div></div>
@@ -714,28 +711,20 @@ function Titled({ text }) {
   return i > 0 && i < 60 ? <li><b>{text.slice(0, i)}.</b> {text.charAt(i + 2).toUpperCase() + text.slice(i + 3)}</li> : <li>{text}</li>;
 }
 
-function Grades() {
-  const backlog = D.parseBacklog(roadmapMd);
+function Limits() {
+  const backlog = D.parseBacklog(reportMd);
   return (
-    <section id="grades" className="card window reveal" data-title="GRADES.md">
-      <p className="eyebrow">Grades, deductions and limits</p>
-      <h2>Graded by its own README, with every <em>deduction</em> named.</h2>
-      <div className="grades">
-        {LEVELS.map(([name, dir, L]) => (
-          <div className="tile" key={name}>
-            <div className="head" style={{ marginBottom: 4 }}><h3>{name}</h3><a className="hint" href={blob(`${dir}/README.md`)}>README ↗</a></div>
-            <div className="num">{L.grade.toLocaleString('en-US')}<small> / 10,000</small></div>
-            <ul className="ded">{L.deductions.map((d) => <li key={d.text}><b>−{d.points}</b> {d.text}</li>)}</ul>
-          </div>
-        ))}
-      </div>
+    <section id="limits" className="card window reveal" data-title="REPORT.md — limits">
+      <p className="eyebrow">Verdict, limits and what is next</p>
+      <h2>Verdict: <em>{VERDICT}</em>. Every limit named.</h2>
+      <p className="sub">The verdict is read from README.md. The loop that ran is a stand-in: no ASR model, TTS voice or LLM, and the cloud side is modelled. REPORT.md scores every claim, misses included.</p>
       <div className="grid2" style={{ marginTop: 20 }}>
         <div>
-          <h3>Failure modes and limits (Deep)</h3>
-          <ul className="limits">{DEEP_README.failures.map((f) => <Titled key={f} text={f} />)}</ul>
+          <h3>Failure modes and limits (latency study)</h3>
+          <ul className="limits">{DEEP_STAGE.failures.map((f) => <Titled key={f} text={f} />)}</ul>
         </div>
         <div>
-          <h3>v1.1 backlog (ROADMAP.md, none claimed done)</h3>
+          <h3>v1.1 backlog (REPORT.md, none claimed done)</h3>
           <ol className="limits">{backlog.map((b) => <Titled key={b.title} text={b.text ? `${b.title}: ${b.text}` : b.title} />)}</ol>
         </div>
       </div>
@@ -745,21 +734,21 @@ function Grades() {
 
 function Reproduce() {
   const docs = [
-    ['SPEC.md', 'Spec', 'Scope and acceptance criteria'],
-    ['level-3-deep/DEEP-SPEC.md', 'Deep spec', 'Budget set before measuring'],
-    ['docs/research-review.md', 'Research review', 'PhD-rubric grade and gaps'],
-    ['DOSSIER.md', 'Dossier', 'Past, present and future'],
-    ['NOVELTY.md', 'Novelty', 'Proposed, draft'],
-    ['ROADMAP.md', 'Roadmap', 'v1.1 backlog'],
+    ['PROPOSAL.md', 'Proposal', 'Scope, designs, budgets; not locked'],
+    ['REPORT.md', 'Report', 'Claims scored, misses, review'],
+    ['docs/decisions/0001-not-pre-registered.md', 'Decision 0001', 'Not pre-registered'],
+    ['docs/decisions/0002-stand-in-components.md', 'Decision 0002', 'Stand-in components'],
+    ['CHANGELOG.md', 'Changelog', 'Every change, dated'],
+    ['experiments/runs/2026-11-07-probes-aarch64.json', 'Headline evidence', 'Probe runs with intervals'],
   ];
   return (
     <section id="reproduce" className="card window reveal" data-title="Terminal — reproduce">
       <p className="eyebrow">Reproduce it</p>
       <h2>Standard library only. Every level reruns on a laptop.</h2>
       <ol className="steps" style={{ marginTop: 16 }}>
-        <li><span className="n">1</span><div><b>Run the tests</b><div className="hint"><code>python -m unittest discover -s tests -v && python tests/test_smoke.py</code></div></div></li>
-        <li><span className="n">2</span><div><b>Rerun the levels</b><div className="hint"><code>python level-2-build/run_build.py && python level-3-deep/run_deep.py && python level-3-deep/run_probes.py</code></div></div></li>
-        <li><span className="n">3</span><div><b>Check Build is byte-identical</b><div className="hint">results_build.json holds no timing, so its sha256 must start <code>{D.shaPrefix(buildMd)}</code>. The Deep and probe files carry timings and vary by run and machine.</div></div></li>
+        <li><span className="n">1</span><div><b>Run the tests</b><div className="hint"><code>python -m unittest discover -s tests -p "test_*.py" -v</code></div></div></li>
+        <li><span className="n">2</span><div><b>Rerun the stages</b><div className="hint"><code>python src/run_build.py && python src/run_deep.py /tmp/deep.json && python src/run_probes.py /tmp/probes.json</code></div></div></li>
+        <li><span className="n">3</span><div><b>Check Build is byte-identical</b><div className="hint">results/build.json holds no timing, so <code>git diff --exit-code results/build.json</code> stays empty and its sha256 starts <code>{D.shaPrefix(D.stageSection(reportMd, 2))}</code>. The Deep and probe runs carry timings and vary by run and machine.</div></div></li>
         <li><span className="n">4</span><div><b>Rebuild this page</b><div className="hint"><code>cd site && npm ci && npm run build</code> replays every case through the JS port first and stops on any mismatch.</div></div></li>
       </ol>
       <p className="hint" style={{ marginTop: 12 }}>CI runs every level on Python 3.11 and 3.12: <a href={`${REPO}/actions/workflows/ci.yml`}>CI status ↗</a></p>

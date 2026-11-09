@@ -34,17 +34,14 @@ Learn: a simulated voice loop over 12 labelled text cases, with
 a barge-in state machine. Intent 12 of 12, exact response 12 of
 12, total stage latency mean 4.835 microseconds and max 6.095
 microseconds against a 5000 microsecond budget, 2 barge-in
-scenarios dropping 5 unplayed frames in total. Grade 8,500 of
-10,000.
+scenarios dropping 5 unplayed frames in total.
 
 Build: the end-to-end loop. Streaming transcript partials in,
 the Learn rule answer reused by import with dialogue state on
-top, tone WAV out, barge-in over real audio frames. Grade 7,500
-of 10,000.
+top, tone WAV out, barge-in over real audio frames.
 
 Deep: the latency budget study. Every local stage timed
-individually, a modelled cloud pipeline next to it. Grade 7,700
-of 10,000.
+individually, a modelled cloud pipeline next to it.
 
 ## The main result
 
@@ -107,7 +104,7 @@ row.
 
 ## Future
 
-The v1.1 backlog is ROADMAP.md in the repo: streaming synthesis
+The v1.1 backlog is REPORT.md (v1.1 backlog) in the repo: streaming synthesis
 with time-to-first-frame measurement, real local ASR and TTS
 swap-ins behind the same stage interface, a measured cloud
 comparison where a free tier allows it, concurrent sessions, a

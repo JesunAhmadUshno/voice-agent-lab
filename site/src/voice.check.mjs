@@ -9,13 +9,14 @@ import * as D from './derive.js';
 const root = new URL('../../', import.meta.url);
 const read = (p) => readFileSync(new URL(p, root), 'utf8');
 const json = (p) => JSON.parse(read(p));
-const learnCases = json('level-1-learn/cases_learn.json');
-const learn = json('level-1-learn/results_learn.json');
-const build = json('level-2-build/results_build.json');
-const buildCases = json('level-2-build/cases_build.json');
-const deepCases = json('level-3-deep/cases_deep.json');
-const deep = json('level-3-deep/results_deep.json');
-const probes = json('level-3-deep/results_probes.json');
+const learnCases = json('experiments/cases/cases_learn.json');
+const learn = json('experiments/runs/2026-11-05-learn-muse-vm.json');
+const build = json('results/build.json');
+const buildCases = json('experiments/cases/cases_build.json');
+const deepCases = json('experiments/cases/cases_deep.json');
+const deep = json('experiments/runs/2026-11-05-deep-muse-vm.json');
+const probes = json('experiments/runs/2026-11-07-probes-aarch64.json');
+const report = read('REPORT.md');
 let n = 0;
 const eq = (a, b, msg) => { assert.deepEqual(a, b, msg); n++; };
 
@@ -78,26 +79,26 @@ for (const r of deep.cases) {
   eq(D.cloudRatio(total, r.total_median_us), r.modelled_cloud_to_local_ratio, `ratio ${r.case_id}`);
 }
 
-// Derived headline numbers match the Deep README's own arithmetic.
+// Derived headline numbers match the arithmetic in REPORT.md, Stage 3.
 const sh = D.deepShares(deep);
-eq(Number(sh.wavMean.toFixed(3)), 9832.704, 'mean WAV median (Deep README)');
-eq(Math.round(sh.wavShare * 100), 89, 'WAV share of mean total (Deep README)');
-eq(Math.round(D.crossingWords(deep).crossing), 74, 'words to cross 100 ms (Deep README)');
+eq(Number(sh.wavMean.toFixed(3)), 9832.704, 'mean WAV median (REPORT.md, Stage 3)');
+eq(Math.round(sh.wavShare * 100), 89, 'WAV share of mean total (REPORT.md, Stage 3)');
+eq(Math.round(D.crossingWords(deep).crossing), 74, 'words to cross 100 ms (REPORT.md, Stage 3)');
 eq(D.tailBreaches(deep, 'median_us'), deep.summary.cases - deep.summary.within_budget, 'median breaches match within_budget');
 eq(D.designShares(deep), { wav_synthesis: 70000, frame_vad: 10000, streaming: 10000, intent_answer: 5000 }, 'design shares');
 for (const r of deep.cases) eq(Number(D.STAGES.reduce((a, s) => a + r.stage_us[s].median_us, 0).toFixed(3)), r.total_median_us, `total ${r.case_id}`);
 
-// Grades and deductions parsed from the level READMEs add up.
-for (const [p, g] of [['level-1-learn/README.md', 8500], ['level-2-build/README.md', 7500], ['level-3-deep/README.md', 7700]]) {
-  const L = D.parseLevelReadme(read(p));
-  eq(L.grade, g, `${p} grade`);
-  eq(L.deductions.reduce((a, d) => a + d.points, 0), 10000 - g, `${p} deductions sum`);
-  assert.ok(L.failures.length >= 5, `${p} failure modes`);
+// Failure modes and the recorded run parsed from each REPORT.md stage; the v1.1 backlog has its 9 items.
+for (const n of [1, 2, 3]) {
+  const st = D.parseStage(D.stageSection(report, n));
+  assert.ok(st.failures.length >= 5, `stage ${n} failure modes`);
+  eq(st.recorded && st.recorded.date, '2026-11-05', `stage ${n} recorded date`);
 }
-eq(D.parseBacklog(read('ROADMAP.md')).length, 9, 'v1.1 backlog items');
+eq(D.parseBacklog(report).length, 9, 'v1.1 backlog items');
+assert.ok(/^\*\*Verdict\.\*\* [^.]+/m.test(read('README.md')), 'README verdict line');
 
-// Build results are byte-identical across runs: the README's sha256 prefix matches the committed file.
-eq(createHash('sha256').update(readFileSync(new URL('level-2-build/results_build.json', root))).digest('hex').slice(0, 16), D.shaPrefix(read('level-2-build/README.md')), 'build sha256');
+// Build results are byte-identical across runs: the report's sha256 prefix matches the committed file.
+eq(createHash('sha256').update(readFileSync(new URL('results/build.json', root))).digest('hex').slice(0, 16), D.shaPrefix(D.stageSection(report, 2)), 'build sha256');
 
 // Paraphrase probe replays through the JS rule.
 for (const r of probes.paraphrase.cases) eq(V.stageIntent(V.normalize(r.transcript)).intent, r.intent, `paraphrase ${r.case_id}`);

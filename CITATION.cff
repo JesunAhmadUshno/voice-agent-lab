@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "voice-agent-lab: a latency budget study of a stand-in real-time voice agent loop, measured locally against a modelled cloud pipeline"
+authors:
+  - family-names: Ushno
+    given-names: Jesun Ahmad
+repository-code: "https://github.com/JesunAhmadUshno/voice-agent-lab"
+license: Apache-2.0
+date-released: 2026-11-08

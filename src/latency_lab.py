@@ -1,6 +1,6 @@
 """Deep-level latency budget study, stdlib only.
 
-Build (level-2-build) proved the voice loop runs end to end and
+Build (src/voice_pipeline.py) proved the voice loop runs end to end and
 reported audio duration from sample counts. Duration is content
 length, not system latency. This module measures the system
 latency of every stage that actually runs locally, reusing the
@@ -19,7 +19,7 @@ Modelled only (never measured, no network, no cloud call):
   Every function and file that reports it labels it modelled.
 
 The inherited substitutions stay in force and are named in
-DEEP-SPEC.md: no real ASR model, no real TTS voice, no LLM. The
+PROPOSAL.md (Deep design): no real ASR model, no real TTS voice, no LLM. The
 measured synthesis time is the cost of a sine loop, and the
 measured answer time is the cost of a keyword rule. Neither is
 presented as the cost of a speech or language model.
@@ -31,8 +31,7 @@ import sys
 import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(HERE, "..", "level-1-learn"))
-sys.path.insert(0, os.path.join(HERE, "..", "level-2-build"))
+sys.path.insert(0, HERE)
 from voice_agent import stage_answer, stage_intent  # noqa: E402
 from voice_pipeline import (  # noqa: E402
     AudioSession,
@@ -43,7 +42,7 @@ from voice_pipeline import (  # noqa: E402
     synthesize_wav,
 )
 
-# Design budget, set in DEEP-SPEC.md before measuring.
+# Design budget, set in PROPOSAL.md (Deep design) before measuring.
 BUDGET_US = 100000.0        # 100 ms for the sum of stage medians
 CEILING_US = 500000.0       # 500 ms hard ceiling, the exit gate
 BARGE_DROP_BUDGET_US = 5000.0

@@ -1,6 +1,6 @@
 // JavaScript port of the repo's voice loop, so the playground runs the same rules in the browser.
-// Sources: level-1-learn/voice_agent.py (normalize, intent, answer), level-2-build/voice_pipeline.py
-// (synthesis, frames, VAD, streaming, dialogue, ASR noise, WER, AudioSession), level-3-deep/latency_lab.py
+// Sources: src/voice_agent.py (normalize, intent, answer), src/voice_pipeline.py
+// (synthesis, frames, VAD, streaming, dialogue, ASR noise, WER, AudioSession), src/latency_lab.py
 // (modelled cloud formula). voice.check.mjs replays every committed case through this file at build time.
 
 const KB = {

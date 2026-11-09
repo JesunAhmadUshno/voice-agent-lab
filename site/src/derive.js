@@ -1,4 +1,4 @@
-// Pure derivations from the committed results and README files. App.jsx and derive.check.mjs both call these,
+// Pure derivations from the committed results files and REPORT.md. App.jsx and derive.check.mjs both call these,
 // so every derived number on the page is asserted at build time.
 
 export const STAGES = ['wav_synthesis', 'frame_vad', 'streaming', 'intent_answer'];
@@ -31,22 +31,21 @@ export const designShares = (deep) => Object.fromEntries(STAGES.map((s) => [s, d
 
 export const tailBreaches = (deep, stat) => deep.cases.filter((c) => STAGES.reduce((a, s) => a + c.stage_us[s][stat], 0) > deep.budget_us).length;
 
-// Level README parsing: grade, deductions, failure modes, recorded date and machine.
-export function parseLevelReadme(md) {
-  const grade = Number(md.match(/^Grade: ([\d,]+) of 10,000/m)[1].replace(/,/g, ''));
-  const dedBlock = md.split(/^Deductions[^\n]*\n/m)[1].split(/\n\n/)[0];
-  const deductions = dedBlock.split(/\n- /).map((s) => s.replace(/^- /, '').replace(/\s+/g, ' ').trim()).filter(Boolean).map((s) => {
-    const m = s.match(/^(.*):\s*minus ([\d,]+)\.?$/);
-    return { text: m[1], points: Number(m[2].replace(/,/g, '')) };
-  });
-  const fmBlock = md.split(/^## Failure modes and limits\n/m)[1].split(/\n## /)[0];
+// REPORT.md parsing. stageSection cuts out one "## Stage N." section; parseStage reads its failure modes and
+// the recorded date and machine. Grades are internal and are not in the report.
+export function stageSection(md, n) {
+  return md.split(new RegExp(`^## Stage ${n}\\. `, 'm'))[1].split(/\n## /)[0];
+}
+
+export function parseStage(md) {
+  const fmBlock = md.split(/^### Failure modes and limits\n/m)[1].split(/\n#{2,3} /)[0];
   const failures = fmBlock.split(/\n- /).map((s) => s.replace(/^\s*- /, '').replace(/\s+/g, ' ').trim()).filter(Boolean);
-  const rec = md.match(/^## Results \(measured ([\d-]+), ([^,]+), ([^)]+)\)/m);
-  return { grade, deductions, failures, recorded: rec && { date: rec[1], machine: rec[2], python: rec[3] } };
+  const rec = md.match(/^### Results \(measured ([\d-]+), ([^,]+), ([^)]+)\)/m);
+  return { failures, recorded: rec && { date: rec[1], machine: rec[2], python: rec[3] } };
 }
 
 export function parseBacklog(md) {
-  const block = md.split(/^## v1\.1 backlog[^\n]*\n/m)[1].split(/\n## /)[0];
+  const block = md.split(/^## v1\.1 backlog[^\n]*\n/m)[1].split(/\n#{2,3} /)[0];
   return block.split(/\n(?=\d+\. )/).filter((s) => /^\d+\. /.test(s)).map((s) => {
     const t = s.replace(/^\d+\. /, '').replace(/\s+/g, ' ').trim();
     const i = t.indexOf(': ');

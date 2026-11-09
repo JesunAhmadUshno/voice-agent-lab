@@ -32,17 +32,17 @@ cd voice-agent-lab
 Optional smoke check, before the levels:
 
 ```text
-python tests/test_smoke.py
+python -m unittest tests.test_layout -v
 ```
 
-Expected: scaffold smoke test: PASS, 8 files present.
+Expected: 4 layout tests pass (required files, no public grade, headline matches the evidence).
 
 ## Step 1: Level 1, Learn, simulated voice loop
 
-Read level-1-learn/README.md first.
+Read REPORT.md (Stage 1) first.
 
 ```text
-python level-1-learn/run_learn.py
+python src/run_learn.py
 python -m unittest tests.test_learn_voice_agent -v
 ```
 
@@ -50,16 +50,17 @@ Expected: 12 cases; intent 12 of 12, response 12 of 12, within
 budget 12 of 12. The recorded run has mean total stage 4.835
 microseconds and max 6.095 microseconds against the 5000
 microsecond budget; your latency values will differ, because
-they are measured wall-clock values. 30 tests pass. The runner
-writes level-1-learn/results_learn.json; its correctness fields
+they are measured wall-clock values. 30 tests pass. The recorded run
+is experiments/runs/2026-11-05-learn-muse-vm.json; a new run writes a new dated
+file in experiments/runs/. Its correctness fields
 are deterministic and its latency fields vary between runs.
 
 ## Step 2: Level 2, Build, end-to-end voice loop
 
-Read level-2-build/README.md and level-2-build/BUILD-SPEC.md.
+Read REPORT.md (Stage 2) and PROPOSAL.md (Build design).
 
 ```text
-python level-2-build/run_build.py
+python src/run_build.py
 python -m unittest tests.test_build_voice_agent -v
 ```
 
@@ -67,16 +68,16 @@ Expected: single intent and response 20 of 20; dialogue intent
 and response 13 of 13; noise intent 16 of 20 (mean WER 0.0826);
 audio 323440 WAV bytes, 20160.0 ms, 1008 frames; barge-in 3
 scenarios, 165 frames dropped. 23 Build tests pass (53 in total
-with Learn). The runner writes level-2-build/results_build.json,
+with Learn). The runner writes results/build.json,
 which holds no wall-clock field and is byte-identical across
 runs.
 
 ## Step 3: Level 3, Deep, latency budget study
 
-Read level-3-deep/README.md and level-3-deep/DEEP-SPEC.md.
+Read REPORT.md (Stage 3) and PROPOSAL.md (Deep design).
 
 ```text
-python level-3-deep/run_deep.py
+python src/run_deep.py
 python -m unittest tests.test_deep_voice_agent -v
 ```
 
@@ -94,15 +95,15 @@ in this step; nothing is called.
 
 ```text
 python -m unittest discover -s tests -v
-python tests/test_smoke.py
+python -m unittest tests.test_layout -v
 ```
 
-Expected: 70 tests, all passing, plus the scaffold smoke test.
+Expected: every test passes (70 at v1.0, plus the probe and layout tests added later).
 
 ## If your numbers differ
 
-Check the results files (results_learn.json, results_build.json,
-results_deep.json) first. For Learn and Deep, ignore timing
+Check the results files (experiments/runs/2026-11-05-learn-muse-vm.json, results/build.json,
+experiments/runs/2026-11-05-deep-muse-vm.json) first. For Learn and Deep, ignore timing
 fields when comparing: they vary by machine load. Every
 deterministic field should match the recorded v1.0 values on
-the same code, and results_build.json should be byte-identical.
+the same code, and results/build.json should be byte-identical.

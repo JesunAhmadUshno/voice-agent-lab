@@ -109,7 +109,7 @@ READMEs and results files in the repo.
 
 ## What would strengthen the candidate
 
-Each item is v1.1 backlog in ROADMAP.md, not done work:
+Each item is v1.1 backlog in REPORT.md (v1.1 backlog), not done work:
 streaming synthesis with time-to-first-frame measurement, real
 local ASR and TTS swap-ins behind the same stage interface, a
 measured cloud comparison where a free tier allows it,

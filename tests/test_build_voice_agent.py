@@ -7,7 +7,7 @@ import sys
 import unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(HERE, "..", "level-2-build"))
+sys.path.insert(0, os.path.join(HERE, "..", "src"))
 from voice_pipeline import (  # noqa: E402
     AudioSession,
     DialogueSession,
