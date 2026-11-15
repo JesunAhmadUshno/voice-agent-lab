@@ -162,7 +162,7 @@ function FrameStrip({ mask, played = null, dropFrom = null, label }) {
 export default function App() {
   useReveal();
   return (
-    <div className="wrap">
+    <div className="wrap"><a className="skip" href="#top">Skip to content</a>
       <MenuBar />
       <div className="glow" aria-hidden="true" />
       <Hero />
@@ -179,14 +179,14 @@ export default function App() {
       <footer>
         Code: Apache-2.0. Every number on this page is read from the committed <code>experiments/</code>, <code>results/</code> and REPORT.md files at build time,
         and a build-time check replays all {buildCases.single.length} Build turns, {buildCases.dialogues.length} dialogues and {buildCases.barge_in.length} barge-in scenarios through the in-browser port before the page is published.
-      </footer>
+      <nav className="support" aria-label="Support this work"><a href="https://github.com/sponsors/JesunAhmadUshno">Sponsor this work</a><a href="https://github.com/sponsors/JesunAhmadUshno">Donate</a><a href="https://buymeacoffee.com/jesun">Buy Me a Coffee</a><a href="https://calendly.com/jesunahmadushno/30min">Work with me</a></nav></footer>
     </div>
   );
 }
 
 function Hero() {
   return (
-    <header className="card hero window" id="top" data-title="voice-agent-lab — README">
+    <header className="card hero window" id="top" data-title="voice-agent-lab - README">
       <div className="head">
         <p className="eyebrow">Latency budget study · CPU voice loop</p>
         <span className="pill good">● {S.within_budget}/{N} within budget</span>
@@ -236,7 +236,7 @@ function Talk() {
   const reset = () => { session.current = new V.DialogueSession(); player.stop(); setTurns([]); };
   const last = turns[0];
   return (
-    <section id="talk" className="card window reveal" data-title="voice_agent.py — Playground">
+    <section id="talk" className="card window reveal" data-title="voice_agent.py - Playground">
       <div className="head">
         <div>
           <p className="eyebrow">Live in your browser</p>
@@ -340,7 +340,7 @@ function Barge() {
   }), []);
   const speaking = view.state === 'SPEAKING';
   return (
-    <section id="barge" className="card window reveal" data-title="AudioSession — barge-in">
+    <section id="barge" className="card window reveal" data-title="AudioSession - barge-in">
       <div className="head">
         <div>
           <p className="eyebrow">Live, plus recorded timings</p>
@@ -403,7 +403,7 @@ function Noise() {
   const bw = (W - pad.l - pad.r) / build.noise.length;
   const y = (v) => pad.t + (1 - v / ymax) * (H - pad.t - pad.b);
   return (
-    <section id="noise" className="card window reveal" data-title="simulate_asr — WER">
+    <section id="noise" className="card window reveal" data-title="simulate_asr - WER">
       <div className="head">
         <div>
           <p className="eyebrow">Live noise lab</p>
@@ -470,7 +470,7 @@ function Budget() {
   const ticks = Array.from({ length: Math.floor(xmax / 50000) + 1 }, (_, i) => i * 50000);
   const statLabel = { median_us: 'median', p90_us: 'p90', p99_us: 'p99' }[stat];
   return (
-    <section id="budget" className="card window reveal" data-title="latency_lab.py — Budget">
+    <section id="budget" className="card window reveal" data-title="latency_lab.py - Budget">
       <div className="head">
         <div>
           <p className="eyebrow">Recorded replay</p>
@@ -530,7 +530,7 @@ function Cloud() {
   const x = (v) => pad.l + ((Math.log10(Math.max(v, 0.5)) - lo) / (hi - lo)) * (W - pad.l - pad.r);
   const isDefault = Object.keys(CLOUD0).every((k) => c[k] === CLOUD0[k]);
   return (
-    <section id="cloud" className="card window reveal" data-title="cloud_model — Modelled">
+    <section id="cloud" className="card window reveal" data-title="cloud_model - Modelled">
       <div className="head">
         <div>
           <p className="eyebrow">Live calculator over recorded local data</p>
@@ -604,7 +604,7 @@ function Scaling() {
     setTiming({ id: pick, words: V.wordCount(resp), full: med(() => V.synthesizeSamples(resp)), head: med(() => V.synthesizeSamples(first)) });
   };
   return (
-    <section id="scaling" className="card window reveal" data-title="synthesize_wav — Scaling">
+    <section id="scaling" className="card window reveal" data-title="synthesize_wav - Scaling">
       <div className="head">
         <div>
           <p className="eyebrow">Recorded · plus an extrapolation</p>
@@ -658,7 +658,7 @@ function Probes() {
   const y = (us) => pad.t + (1 - us / ymax) * (H - pad.t - pad.b);
   const yt = [0, 0.25, 0.5, 0.75, 1].map((f) => f * ymax);
   return (
-    <section id="probes" className="card window reveal" data-title="run_probes.py — Probes">
+    <section id="probes" className="card window reveal" data-title="run_probes.py - Probes">
       <div className="head">
         <div>
           <p className="eyebrow">Recorded add-on probes</p>
@@ -714,7 +714,7 @@ function Titled({ text }) {
 function Limits() {
   const backlog = D.parseBacklog(reportMd);
   return (
-    <section id="limits" className="card window reveal" data-title="REPORT.md — limits">
+    <section id="limits" className="card window reveal" data-title="REPORT.md - limits">
       <p className="eyebrow">Verdict, limits and what is next</p>
       <h2>Verdict: <em>{VERDICT}</em>. Every limit named.</h2>
       <p className="sub">The verdict is read from README.md. The loop that ran is a stand-in: no ASR model, TTS voice or LLM, and the cloud side is modelled. REPORT.md scores every claim, misses included.</p>
@@ -742,7 +742,7 @@ function Reproduce() {
     ['experiments/runs/2026-11-07-probes-aarch64.json', 'Headline evidence', 'Probe runs with intervals'],
   ];
   return (
-    <section id="reproduce" className="card window reveal" data-title="Terminal — reproduce">
+    <section id="reproduce" className="card window reveal" data-title="Terminal - reproduce">
       <p className="eyebrow">Reproduce it</p>
       <h2>Standard library only. Every level reruns on a laptop.</h2>
       <ol className="steps" style={{ marginTop: 16 }}>
